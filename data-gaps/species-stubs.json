@@ -1,0 +1,1164 @@
+[
+  {
+    "scientificName": "Bungarus caeruleus",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 1,
+      "AF": 2,
+      "BD": 1,
+      "BT": 2,
+      "NP": 1,
+      "PK": 1,
+      "LK": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus flaviceps",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "TH": 2,
+      "MY": 2,
+      "VN": 2,
+      "ID": 2,
+      "BN": 2,
+      "KH": 2,
+      "MM": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja naja",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 1,
+      "AF": 2,
+      "BD": 2,
+      "BT": 1,
+      "NP": 1,
+      "PK": 1,
+      "LK": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Calliophis intestinalis",
+    "genus": "Calliophis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "TH": 2,
+      "MY": 2,
+      "SG": 2,
+      "PH": 2,
+      "ID": 2,
+      "BN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja sumatrana",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "TH": 2,
+      "MY": 1,
+      "SG": 1,
+      "PH": 1,
+      "ID": 1,
+      "BN": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Protobothrops jerdonii",
+    "genus": "Protobothrops",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 2,
+      "IN": 2,
+      "LA": 2,
+      "MM": 2,
+      "BT": 2,
+      "NP": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus niger",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "MM": 2,
+      "BD": 1,
+      "BT": 1,
+      "NP": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Calliophis bivirgatus",
+    "genus": "Calliophis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "TH": 2,
+      "MY": 2,
+      "SG": 2,
+      "ID": 2,
+      "BN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus bungaroides",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "MM": 2,
+      "BD": 2,
+      "NP": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus lividus",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "BD": 2,
+      "BT": 2,
+      "NP": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Echis carinatus",
+    "genus": "Echis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 1,
+      "AF": 1,
+      "PK": 1,
+      "LK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Protobothrops mucrosquamatus",
+    "genus": "Protobothrops",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 2,
+      "IN": 2,
+      "LA": 2,
+      "MM": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus erythrurus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "MM": 1,
+      "BD": 1,
+      "BT": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus purpureomaculatus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "MY": 2,
+      "SG": 2,
+      "ID": 2,
+      "MM": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Tropidolaemus subannulatus",
+    "genus": "Tropidolaemus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "MY": 2,
+      "PH": 2,
+      "ID": 2,
+      "BN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus multicinctus",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 1,
+      "LA": 1,
+      "MM": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus sindanus",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "AF": 2,
+      "PK": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus walli",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "BD": 1,
+      "NP": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Gloydius himalayanus",
+    "genus": "Gloydius",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "NP": 2,
+      "PK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja oxiana",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "AF": 1,
+      "PK": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Atractaspis bibronii",
+    "genus": "Atractaspis",
+    "family": "Atractaspididae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2,
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bitis arietans",
+    "genus": "Bitis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 1,
+      "KE": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bitis gabonica",
+    "genus": "Bitis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2,
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus oreganus",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 1,
+      "CA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus viridis",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 1,
+      "CA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Dendroaspis angusticeps",
+    "genus": "Dendroaspis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 1,
+      "KE": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Dispholidus typus",
+    "genus": "Dispholidus",
+    "family": "Colubridae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2,
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Eristicophis macmahonii",
+    "genus": "Eristicophis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AF": 2,
+      "PK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Hypnale hypnale",
+    "genus": "Hypnale",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 1,
+      "LK": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Macrovipera lebetina",
+    "genus": "Macrovipera",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AF": 1,
+      "PK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja atra",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 1,
+      "LA": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja melanoleuca",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2,
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Oxyuranus scutellatus",
+    "genus": "Oxyuranus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2,
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Protobothrops kaulbacki",
+    "genus": "Protobothrops",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "MM": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Sistrurus catenatus",
+    "genus": "Sistrurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2,
+      "CA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus hageni",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "TH": 2,
+      "MY": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus insularis",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2,
+      "TL": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus macrops",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "TH": 2,
+      "LA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus septentrionalis",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2,
+      "NP": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus sumatranus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2,
+      "BN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Acanthophis antarcticus",
+    "genus": "Acanthophis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Acanthophis cryptamydros",
+    "genus": "Acanthophis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Acanthophis laevis",
+    "genus": "Acanthophis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Acanthophis rugosus",
+    "genus": "Acanthophis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Agkistrodon piscivorus",
+    "genus": "Agkistrodon",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Atheris squamigera",
+    "genus": "Atheris",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Atractaspis fallax",
+    "genus": "Atractaspis",
+    "family": "Atractaspididae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Atractaspis irregularis",
+    "genus": "Atractaspis",
+    "family": "Atractaspididae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bitis nasicornis",
+    "genus": "Bitis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus ceylonicus",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "LK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus magnimaculatus",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "MM": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Bungarus slowinskii",
+    "genus": "Bungarus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus atrox",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus horridus",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus molossus",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus ornatus",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus ruber",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Crotalus scutulatus",
+    "genus": "Crotalus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Deinagkistrodon acutus",
+    "genus": "Deinagkistrodon",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Dendroaspis jamesoni",
+    "genus": "Dendroaspis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Echis pyramidum",
+    "genus": "Echis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Gloydius halys",
+    "genus": "Gloydius",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AF": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Hemachatus haemachatus",
+    "genus": "Hemachatus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Himalayophis tibetanus",
+    "genus": "Himalayophis",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "NP": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Hypnale nepa",
+    "genus": "Hypnale",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "LK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Hypnale zara",
+    "genus": "Hypnale",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "LK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Micropechis ikaheka",
+    "genus": "Micropechis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Micrurus fulvius",
+    "genus": "Micrurus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Micrurus tener",
+    "genus": "Micrurus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja annulifera",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja ashei",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja haje",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja mandalayensis",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "MM": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja mossambica",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja nigricincta",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja nigricollis",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja nivea",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja pallida",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja philippinensis",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "PH": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja sagittifera",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja samarensis",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "PH": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Naja sputatrix",
+    "genus": "Naja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Notechis scutatus",
+    "genus": "Notechis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Oxyuranus microlepidotus",
+    "genus": "Oxyuranus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Oxyuranus temporalis",
+    "genus": "Oxyuranus",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudechis australis",
+    "genus": "Pseudechis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudechis papuanus",
+    "genus": "Pseudechis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudechis rossignolii",
+    "genus": "Pseudechis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ID": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudohaje goldii",
+    "genus": "Pseudohaje",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudonaja affinis",
+    "genus": "Pseudonaja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudonaja aspidorhyncha",
+    "genus": "Pseudonaja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudonaja mengdeni",
+    "genus": "Pseudonaja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Pseudonaja nuchalis",
+    "genus": "Pseudonaja",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 1
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Sistrurus miliarius",
+    "genus": "Sistrurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "US": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Thelotornis capensis",
+    "genus": "Thelotornis",
+    "family": "Colubridae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "ZA": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Thelotornis mossambicanus",
+    "genus": "Thelotornis",
+    "family": "Colubridae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Thelotornis usambaricus",
+    "genus": "Thelotornis",
+    "family": "Colubridae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KE": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus cardamomensis",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "KH": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus flavomaculatus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "PH": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus gramineus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus malabaricus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "IN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus rubeus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus stejnegeri",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "VN": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Trimeresurus trigonocephalus",
+    "genus": "Trimeresurus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "LK": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Tropidechis carinatus",
+    "genus": "Tropidechis",
+    "family": "Elapidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "AU": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Tropidolaemus philippensis",
+    "genus": "Tropidolaemus",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "PH": 2
+    },
+    "status": "needs_sourcing"
+  },
+  {
+    "scientificName": "Vipera aspis",
+    "genus": "Vipera",
+    "family": "Viperidae",
+    "venomStatus": "venomous",
+    "whoCategoryByCountry": {
+      "FR": 1
+    },
+    "status": "needs_sourcing"
+  }
+]

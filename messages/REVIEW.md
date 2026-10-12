@@ -1,0 +1,187 @@
+# Safety-critical translations — review status
+
+Thai (th) and Burmese (my) translations of medical and safety text are **drafts** until a
+native speaker with medical knowledge reviews them against the English source
+(messages/en.json, and the English species records in src/data/species/catalog.ts).
+
+How to review:
+
+1. Compare each key below in messages/th.json or messages/my.json (or, for `species:<id>.<field>`,
+   src/data/species/translations/th.ts or my.ts) with the English.
+2. Fix the translation if needed, then change its status to `reviewed: yes (reviewer, YYYY-MM-DD)`.
+3. After adding or renaming keys, run `npm run i18n:review`: new keys are added as `reviewed: no`,
+   existing statuses are kept. A test fails if this list is out of date.
+
+Burmese text must be Myanmar Unicode, never Zawgyi.
+
+| Key | th | my |
+| --- | --- | --- |
+| `common.bitten` | reviewed: no | reviewed: no |
+| `footer.disclaimer` | reviewed: no | reviewed: no |
+| `home.neverApproach` | reviewed: no | reviewed: no |
+| `identify.lead` | reviewed: no | reviewed: no |
+| `identify.warningStrong` | reviewed: no | reviewed: no |
+| `identify.warning` | reviewed: no | reviewed: no |
+| `result.listedAs` | reviewed: no | reviewed: no |
+| `result.altNotReviewedNotAssessed` | reviewed: no | reviewed: no |
+| `result.altNotReviewedFrom` | reviewed: no | reviewed: no |
+| `result.basisNotAssessed` | reviewed: no | reviewed: no |
+| `result.basisFamily` | reviewed: no | reviewed: no |
+| `result.basisGenus` | reviewed: no | reviewed: no |
+| `result.basisGroup` | reviewed: no | reviewed: no |
+| `result.treatDangerous` | reviewed: no | reviewed: no |
+| `result.serviceUnavailableNote` | reviewed: no | reviewed: no |
+| `result.ifBitten` | reviewed: no | reviewed: no |
+| `result.getGuidance` | reviewed: no | reviewed: no |
+| `result.call` | reviewed: no | reviewed: no |
+| `status.likely_identified` | reviewed: no | reviewed: no |
+| `status.conflicting_evidence` | reviewed: no | reviewed: no |
+| `status.unknown_species` | reviewed: no | reviewed: no |
+| `status.insufficient_image` | reviewed: no | reviewed: no |
+| `status.no_snake` | reviewed: no | reviewed: no |
+| `status.multiple_snakes` | reviewed: no | reviewed: no |
+| `status.service_unavailable` | reviewed: no | reviewed: no |
+| `venomStatus.venomous.label` | reviewed: no | reviewed: no |
+| `venomStatus.venomous.inline` | reviewed: no | reviewed: no |
+| `venomStatus.venomous.short` | reviewed: no | reviewed: no |
+| `venomStatus.potentially_venomous.label` | reviewed: no | reviewed: no |
+| `venomStatus.potentially_venomous.inline` | reviewed: no | reviewed: no |
+| `venomStatus.potentially_venomous.short` | reviewed: no | reviewed: no |
+| `venomStatus.mildly_venomous.label` | reviewed: no | reviewed: no |
+| `venomStatus.mildly_venomous.inline` | reviewed: no | reviewed: no |
+| `venomStatus.mildly_venomous.short` | reviewed: no | reviewed: no |
+| `venomStatus.non_venomous.label` | reviewed: no | reviewed: no |
+| `venomStatus.non_venomous.inline` | reviewed: no | reviewed: no |
+| `venomStatus.non_venomous.short` | reviewed: no | reviewed: no |
+| `venomStatus.unknown.label` | reviewed: no | reviewed: no |
+| `venomStatus.unknown.inline` | reviewed: no | reviewed: no |
+| `venomStatus.unknown.short` | reviewed: no | reviewed: no |
+| `venomStatus.nonVenomousSpecies` | reviewed: no | reviewed: no |
+| `venomStatus.nonVenomousSpeciesInline` | reviewed: no | reviewed: no |
+| `venomType.neurotoxic.label` | reviewed: no | reviewed: no |
+| `venomType.neurotoxic.description` | reviewed: no | reviewed: no |
+| `venomType.hemotoxic.label` | reviewed: no | reviewed: no |
+| `venomType.hemotoxic.description` | reviewed: no | reviewed: no |
+| `venomType.cytotoxic.label` | reviewed: no | reviewed: no |
+| `venomType.cytotoxic.description` | reviewed: no | reviewed: no |
+| `venomType.myotoxic.label` | reviewed: no | reviewed: no |
+| `venomType.myotoxic.description` | reviewed: no | reviewed: no |
+| `venomType.cardiotoxic.label` | reviewed: no | reviewed: no |
+| `venomType.cardiotoxic.description` | reviewed: no | reviewed: no |
+| `risk.low` | reviewed: no | reviewed: no |
+| `risk.moderate` | reviewed: no | reviewed: no |
+| `risk.high` | reviewed: no | reviewed: no |
+| `risk.very_high` | reviewed: no | reviewed: no |
+| `risk.unknown` | reviewed: no | reviewed: no |
+| `risk.medicalRisk` | reviewed: no | reviewed: no |
+| `risk.riskLabel` | reviewed: no | reviewed: no |
+| `band.high` | reviewed: no | reviewed: no |
+| `band.moderate` | reviewed: no | reviewed: no |
+| `band.low` | reviewed: no | reviewed: no |
+| `safety.keepDistance` | reviewed: no | reviewed: no |
+| `safety.actions.stayBack` | reviewed: no | reviewed: no |
+| `safety.actions.noTouch` | reviewed: no | reviewed: no |
+| `safety.actions.children` | reviewed: no | reviewed: no |
+| `safety.actions.rescue` | reviewed: no | reviewed: no |
+| `safety.actions.retake` | reviewed: no | reviewed: no |
+| `safety.actions.spitting` | reviewed: no | reviewed: no |
+| `safety.lookAlike` | reviewed: no | reviewed: no |
+| `safety.bittenPrompt` | reviewed: no | reviewed: no |
+| `safety.getGuidance` | reviewed: no | reviewed: no |
+| `notes.typo` | reviewed: no | reviewed: no |
+| `notes.unreviewedInGroup` | reviewed: no | reviewed: no |
+| `notes.unreviewedNotAssessed` | reviewed: no | reviewed: no |
+| `notes.groupPoints` | reviewed: no | reviewed: no |
+| `notes.groupSuggested` | reviewed: no | reviewed: no |
+| `notes.unrecognised` | reviewed: no | reviewed: no |
+| `notes.notInDatabase` | reviewed: no | reviewed: no |
+| `notes.partialOnly` | reviewed: no | reviewed: no |
+| `notes.outsideCountry` | reviewed: no | reviewed: no |
+| `notes.secondOpinionAgreed` | reviewed: no | reviewed: no |
+| `notes.secondOpinionDisagreed` | reviewed: no | reviewed: no |
+| `notes.legacyResult` | reviewed: no | reviewed: no |
+| `emergency.srTitle` | reviewed: no | reviewed: no |
+| `emergency.callNow` | reviewed: no | reviewed: no |
+| `emergency.treatEvery` | reviewed: no | reviewed: no |
+| `emergency.noVerifiedNumber` | reviewed: no | reviewed: no |
+| `emergency.chooseCountry` | reviewed: no | reviewed: no |
+| `emergency.numbersDisclaimer` | reviewed: no | reviewed: no |
+| `emergency.firstAidTitle` | reviewed: no | reviewed: no |
+| `emergency.firstAidLead` | reviewed: no | reviewed: no |
+| `emergency.sourcesTitle` | reviewed: no | reviewed: no |
+| `firstAid.doTitle` | reviewed: no | reviewed: no |
+| `firstAid.dontTitle` | reviewed: no | reviewed: no |
+| `firstAid.do.moveAway` | reviewed: no | reviewed: no |
+| `firstAid.do.call` | reviewed: no | reviewed: no |
+| `firstAid.do.calm` | reviewed: no | reviewed: no |
+| `firstAid.do.limb` | reviewed: no | reviewed: no |
+| `firstAid.do.rings` | reviewed: no | reviewed: no |
+| `firstAid.do.time` | reviewed: no | reviewed: no |
+| `firstAid.do.eyes` | reviewed: no | reviewed: no |
+| `firstAid.dont.cut` | reviewed: no | reviewed: no |
+| `firstAid.dont.suck` | reviewed: no | reviewed: no |
+| `firstAid.dont.tourniquet` | reviewed: no | reviewed: no |
+| `firstAid.dont.ice` | reviewed: no | reviewed: no |
+| `firstAid.dont.remedies` | reviewed: no | reviewed: no |
+| `firstAid.dont.catch` | reviewed: no | reviewed: no |
+| `firstAid.dont.wait` | reviewed: no | reviewed: no |
+| `firstAid.regional.auPressure` | reviewed: no | reviewed: no |
+| `firstAid.regional.auNoWash` | reviewed: no | reviewed: no |
+| `contacts.emergencyServices` | reviewed: no | reviewed: no |
+| `contacts.emergencyMedical` | reviewed: no | reviewed: no |
+| `contacts.ambulance` | reviewed: no | reviewed: no |
+| `contacts.ambulanceFire` | reviewed: no | reviewed: no |
+| `contacts.ambulanceMostStates` | reviewed: no | reviewed: no |
+| `contacts.emergencyFromMobile` | reviewed: no | reviewed: no |
+| `contacts.ramathibodiPoison` | reviewed: no | reviewed: no |
+| `contacts.poisonAdvice24h` | reviewed: no | reviewed: no |
+| `contacts.auPoisonsCentre` | reviewed: no | reviewed: no |
+| `contacts.usPoisonHelp` | reviewed: no | reviewed: no |
+| `contacts.nhs111` | reviewed: no | reviewed: no |
+| `contacts.nhs111Note` | reviewed: no | reviewed: no |
+| `species.draftNote` | reviewed: no | reviewed: no |
+| `species.notReviewedGroupStrong` | reviewed: no | reviewed: no |
+| `species.notReviewedGroupBody` | reviewed: no | reviewed: no |
+| `species.notReviewedNoneStrong` | reviewed: no | reviewed: no |
+| `species.notReviewedNoneBody` | reviewed: no | reviewed: no |
+| `venomPanel.howStrong` | reviewed: no | reviewed: no |
+| `venomPanel.riskExplainer` | reviewed: no | reviewed: no |
+| `venomPanel.potencyTitle` | reviewed: no | reviewed: no |
+| `venomPanel.potencyDesc` | reviewed: no | reviewed: no |
+| `venomPanel.noPotency` | reviewed: no | reviewed: no |
+| `venomPanel.antivenomTitle` | reviewed: no | reviewed: no |
+| `venomPanel.noAntivenom` | reviewed: no | reviewed: no |
+| `venomPanel.profileTitle` | reviewed: no | reviewed: no |
+| `venomPanel.mildProfile` | reviewed: no | reviewed: no |
+| `venomPanel.notVenomousProfile` | reviewed: no | reviewed: no |
+| `venomPanel.noProfile` | reviewed: no | reviewed: no |
+| `venomPanel.effectsTitle` | reviewed: no | reviewed: no |
+| `notFound.body` | reviewed: no | reviewed: no |
+| `species:banded-krait.medicalEffects` | reviewed: no | reviewed: no |
+| `species:banded-krait.riskRationale` | reviewed: no | reviewed: no |
+| `species:checkered-keelback.medicalEffects` | reviewed: no | reviewed: no |
+| `species:checkered-keelback.riskRationale` | reviewed: no | reviewed: no |
+| `species:eastern-russells-viper.medicalEffects` | reviewed: no | reviewed: no |
+| `species:eastern-russells-viper.riskRationale` | reviewed: no | reviewed: no |
+| `species:golden-tree-snake.medicalEffects` | reviewed: no | reviewed: no |
+| `species:golden-tree-snake.riskRationale` | reviewed: no | reviewed: no |
+| `species:indochinese-spitting-cobra.medicalEffects` | reviewed: no | reviewed: no |
+| `species:indochinese-spitting-cobra.riskRationale` | reviewed: no | reviewed: no |
+| `species:king-cobra.medicalEffects` | reviewed: no | reviewed: no |
+| `species:king-cobra.riskRationale` | reviewed: no | reviewed: no |
+| `species:laotian-wolf-snake.medicalEffects` | reviewed: no | reviewed: no |
+| `species:laotian-wolf-snake.riskRationale` | reviewed: no | reviewed: no |
+| `species:malayan-krait.medicalEffects` | reviewed: no | reviewed: no |
+| `species:malayan-krait.riskRationale` | reviewed: no | reviewed: no |
+| `species:malayan-pit-viper.medicalEffects` | reviewed: no | reviewed: no |
+| `species:malayan-pit-viper.riskRationale` | reviewed: no | reviewed: no |
+| `species:monocled-cobra.medicalEffects` | reviewed: no | reviewed: no |
+| `species:monocled-cobra.riskRationale` | reviewed: no | reviewed: no |
+| `species:oriental-whip-snake.medicalEffects` | reviewed: no | reviewed: no |
+| `species:oriental-whip-snake.riskRationale` | reviewed: no | reviewed: no |
+| `species:red-necked-keelback.medicalEffects` | reviewed: no | reviewed: no |
+| `species:red-necked-keelback.riskRationale` | reviewed: no | reviewed: no |
+| `species:reticulated-python.medicalEffects` | reviewed: no | reviewed: no |
+| `species:reticulated-python.riskRationale` | reviewed: no | reviewed: no |
+| `species:white-lipped-pit-viper.medicalEffects` | reviewed: no | reviewed: no |
+| `species:white-lipped-pit-viper.riskRationale` | reviewed: no | reviewed: no |

@@ -1,0 +1,478 @@
+@import "tailwindcss";
+
+/*
+  SERPENT design tokens.
+  Cool lichen-grey paper, deep moss ink, restrained semantic colours.
+  Display: Source Serif 4 (optical sizes; scientific names are set in italic, per convention).
+  UI/body: Schibsted Grotesk.
+  Structure comes from 1px borders and hairline dividers: no shadows, no gradients.
+*/
+
+:root {
+  --paper: #eef1ec;
+  --surface: #f9fbf8;
+  --surface-2: #e4e9e4;
+  --ink: #17201b;
+  --ink-2: #4a554f;
+  --line: #cdd5ce;
+  --divider-soft: #e4e9e4;
+  --moss: #2e4a3c;
+  --moss-ink: #ffffff;
+  --moss-hover: #253d31;
+  /* Filter dropdowns: field background, option hover, muted counts. */
+  --field: #ffffff;
+  --option-hover: #eef3ee;
+  --muted: #8a948e;
+  --panel-shadow: 0 12px 24px -12px rgba(23, 32, 27, 0.25);
+
+  --low: #2f6b47;      --low-bg: #e1eee4;
+  --caution: #845407;  --caution-bg: #f6ead2;
+  --high: #a3241a;     --high-bg: #f6e0dc;  --high-border: #e7bdb6;
+  --critical: #6e1010; --critical-bg: #f0d2ce;
+  --neutral: #4d5752;  --neutral-bg: #e2e7e3;
+
+  /* Filled "venomous" badge and the emergency surfaces keep white text in both themes. */
+  --venom-fill: #a3241a;
+  --emergency: #6e1010;
+  --emergency-ink: #ffffff;
+
+  --focus: #1f5fbf;
+  --gutter: 20px;
+
+  /* Font stacks. Thai and Burmese pages add their Noto faces after the Latin ones,
+     so names and numbers keep the Latin faces and the script falls through to Noto. */
+  --font-ui: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4 Variable", "Source Serif Pro", Georgia, serif;
+}
+
+html:lang(th) {
+  --font-ui: var(--font-schibsted), var(--font-noto-sans-thai), ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4 Variable", var(--font-noto-serif-thai), var(--font-noto-sans-thai), Georgia, serif;
+}
+
+html:lang(my) {
+  --font-ui: var(--font-schibsted), var(--font-noto-sans-myanmar), ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4 Variable", var(--font-noto-serif-myanmar), var(--font-noto-sans-myanmar), Georgia, serif;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1512;
+    --surface: #161e1a;
+    --surface-2: #1d2722;
+    --ink: #e3e9e4;
+    --ink-2: #9ca9a1;
+    --line: #2c3832;
+    --divider-soft: #1f2924;
+    --moss: #9cc2aa;
+    --moss-ink: #0f1512;
+    --moss-hover: #86ad95;
+    --field: #161e1a;
+    --option-hover: #1d2722;
+    --muted: #7f8c85;
+    --panel-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+
+    --low: #8fd0a6;      --low-bg: #16291e;
+    --caution: #e9b75c;  --caution-bg: #2c2312;
+    --high: #f19a8f;     --high-bg: #321816;  --high-border: #5a2a25;
+    --critical: #ffb4aa; --critical-bg: #3d1311;
+    --neutral: #b3bdb7;  --neutral-bg: #222b26;
+
+    --venom-fill: #a3241a;
+    --emergency: #7a1414;
+    --emergency-ink: #ffffff;
+
+    --focus: #8ab4ff;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-divider: var(--divider-soft);
+  --color-moss: var(--moss);
+  --color-moss-ink: var(--moss-ink);
+  --color-moss-hover: var(--moss-hover);
+  --color-low: var(--low);
+  --color-low-bg: var(--low-bg);
+  --color-caution: var(--caution);
+  --color-caution-bg: var(--caution-bg);
+  --color-high: var(--high);
+  --color-high-bg: var(--high-bg);
+  --color-high-border: var(--high-border);
+  --color-critical: var(--critical);
+  --color-critical-bg: var(--critical-bg);
+  --color-neutral: var(--neutral);
+  --color-neutral-bg: var(--neutral-bg);
+  --color-venom: var(--venom-fill);
+  --color-emergency: var(--emergency);
+  --color-emergency-ink: var(--emergency-ink);
+
+  --font-sans: var(--font-ui);
+  --font-serif: var(--font-display);
+
+  /* Radii: 10px cards and buttons, 6px badges and inputs. */
+  --radius-card: 10px;
+  --radius-badge: 6px;
+
+  /* Text sizes (mobile values; serif headings scale up via the .type-* classes below). */
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.45;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.55;
+  --text-lead: 1.0625rem;
+  --text-lead--line-height: 1.5;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  line-height: 1.55;
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer components {
+  /* Page container: 20px gutter on mobile, 32px from tablet, 1120px content max. */
+  .page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: calc(1120px + 2 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+
+  /* Serif headings. Optical sizing on; tight leading and tracking. */
+  .type-display,
+  .type-h1,
+  .type-h2,
+  .type-name {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  .type-display { font-size: 3rem;   line-height: 1.0;  letter-spacing: -0.03em; }
+  .type-h1      { font-size: 2.25rem; line-height: 1.05; letter-spacing: -0.025em; }
+  .type-h2      { font-size: 1.5rem; line-height: 1.1;  letter-spacing: -0.015em; font-weight: 500; }
+  .type-name    { font-size: 1.25rem; line-height: 1.1; letter-spacing: -0.015em; }
+  .type-h3      { font-size: 1.0625rem; line-height: 1.35; font-weight: 600; }
+
+  @media (min-width: 1024px) {
+    .type-display { font-size: 4rem; }
+    .type-h1      { font-size: 2.75rem; }
+    .type-h2      { font-size: 1.75rem; }
+  }
+
+  /*
+    "Viewfinder" hover for primary camera CTAs: corner brackets close in and a
+    scan line sweeps once. Decorative spans come from <ViewfinderDecor />.
+    Hover only on real pointers so touch devices don't keep a stuck state;
+    keyboard focus shows the corners alongside the global focus ring.
+    The hover background is the hover:bg-moss-hover utility (see Button.tsx),
+    because a component-layer rule can't beat the bg-moss utility.
+    Brackets and scan line use --moss-ink so they read on moss in both themes.
+  */
+  .btn-viewfinder {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background-color 180ms ease, transform 180ms cubic-bezier(.2, .7, .2, 1);
+  }
+  /* Inherits the button's gap so the resting layout is unchanged. */
+  .btn-viewfinder .vf-label {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+  }
+  .btn-viewfinder .vf-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 0 solid color-mix(in srgb, var(--moss-ink) 92%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 240ms cubic-bezier(.2, .7, .2, 1);
+  }
+  .btn-viewfinder .vf-tl { top: 9px; left: 12px; border-top-width: 2px; border-left-width: 2px; border-top-left-radius: 4px; transform: translate(-6px, -6px); }
+  .btn-viewfinder .vf-tr { top: 9px; right: 12px; border-top-width: 2px; border-right-width: 2px; border-top-right-radius: 4px; transform: translate(6px, -6px); }
+  .btn-viewfinder .vf-bl { bottom: 9px; left: 12px; border-bottom-width: 2px; border-left-width: 2px; border-bottom-left-radius: 4px; transform: translate(-6px, 6px); }
+  .btn-viewfinder .vf-br { bottom: 9px; right: 12px; border-bottom-width: 2px; border-right-width: 2px; border-bottom-right-radius: 4px; transform: translate(6px, 6px); }
+  .btn-viewfinder .vf-scan {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 10px;
+    height: 1px;
+    background: color-mix(in srgb, var(--moss-ink) 60%, transparent);
+    opacity: 0;
+    pointer-events: none;
+  }
+  @media (hover: hover) {
+    .btn-viewfinder:hover .vf-corner { opacity: 1; transform: translate(0, 0); }
+    .btn-viewfinder:hover .vf-scan { animation: vf-scan 900ms ease-in-out 120ms; }
+  }
+  .btn-viewfinder:focus-visible .vf-corner { opacity: 1; transform: translate(0, 0); }
+  .btn-viewfinder:active { transform: scale(.98); }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-viewfinder,
+    .btn-viewfinder * { animation: none !important; transition-duration: 1ms !important; }
+  }
+
+  /* FilterDropdown (select-only combobox). */
+  .fd-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 56px;
+    padding: 6px 14px 6px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--field);
+    cursor: pointer;
+    transition: border-color 150ms ease;
+  }
+  .fd-trigger:hover,
+  .fd-trigger[data-open] {
+    border-color: var(--ink);
+  }
+  .fd-label {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: var(--ink-2);
+  }
+  .fd-value {
+    display: block;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .fd-chevron {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--ink-2);
+    transition: transform 200ms ease;
+  }
+  .fd-trigger[data-open] .fd-chevron {
+    transform: rotate(90deg);
+  }
+  .fd-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 30;
+    max-height: 360px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px 0;
+    border: 1px solid var(--ink);
+    border-radius: 10px;
+    background: var(--field);
+    box-shadow: var(--panel-shadow);
+    animation: fd-in 160ms ease-out;
+  }
+  .fd-panel[hidden] {
+    display: none;
+  }
+  .fd-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 18px 0 22px;
+    font-size: 1rem;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+  /* The left bar: moss, growing from the centre, for the hovered / keyboard-active option. */
+  .fd-option::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--moss);
+    transform: scaleY(0);
+    transition: transform 160ms ease;
+  }
+  .fd-option[data-active] {
+    color: var(--moss);
+    background: var(--option-hover);
+  }
+  .fd-option[data-active]::before {
+    transform: scaleY(1);
+  }
+  .fd-option[aria-selected="true"] {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .fd-option[aria-selected="true"]::before {
+    background: var(--ink);
+    transform: scaleY(1);
+  }
+  .fd-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 9999px;
+  }
+  .fd-count {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .fd-check {
+    display: inline-flex;
+    width: 16px;
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fd-trigger,
+    .fd-chevron,
+    .fd-panel,
+    .fd-option,
+    .fd-option::before {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Small uppercase-free label above a value or block. */
+  .eyebrow {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+}
+
+/*
+  Thai and Burmese. Unlayered so they win over Tailwind utilities.
+  - No negative tracking or uppercase: both break these scripts.
+  - Taller lines: stacked vowels and tone marks sit above and below the
+    line; Burmese stacks the most, so it gets the most room. Headings keep
+    at least 1.3 (Thai) / 1.5 (Burmese) so tall glyphs are never clipped.
+  - Neither script spaces words, so long runs must be allowed to wrap
+    (browsers break Thai and Burmese at word boundaries by dictionary;
+    overflow-wrap is the fallback for anything that still doesn't fit).
+*/
+html:is(:lang(th), :lang(my)) body {
+  overflow-wrap: break-word;
+}
+html:is(:lang(th), :lang(my)) :is(.type-display, .type-h1, .type-h2, .type-name, .eyebrow, [class*="tracking-"]) {
+  letter-spacing: normal;
+}
+html:is(:lang(th), :lang(my)) .uppercase {
+  text-transform: none;
+}
+html:lang(th) body,
+html:lang(th) body * {
+  line-height: 1.6 !important;
+}
+html:lang(th) body :is(h1, h2, h3, h4, .type-display, .type-h1, .type-h2, .type-h3, .type-name) {
+  line-height: 1.3 !important;
+}
+html:lang(my) body,
+html:lang(my) body * {
+  line-height: 1.8 !important;
+}
+html:lang(my) body :is(h1, h2, h3, h4, .type-display, .type-h1, .type-h2, .type-h3, .type-name) {
+  line-height: 1.5 !important;
+}
+/* Burmese option labels break between words (spaces), not between syllables, unless a word can't fit. */
+html:lang(my) .fd-option {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* Keep the dropdown trigger's own radius under the global focus ring. */
+.fd-trigger:focus-visible {
+  border-radius: 10px;
+}
+
+/* Binomial nomenclature is italic by convention. */
+.binomial {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: 450;
+}
+
+/* Hatched fill used for "unknown" in risk meters (not colour-only). */
+.hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--line) 0 4px,
+    transparent 4px 8px
+  );
+}
+
+/* Expandable rows: hide the default marker, rotate our chevron. */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] > summary .chevron { transform: rotate(180deg); }
+
+@keyframes fd-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vf-scan {
+  0% { top: 10px; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: calc(100% - 11px); opacity: 0; }
+}
+
+@keyframes scan {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+.indeterminate {
+  animation: scan 1.4s ease-in-out infinite;
+}

@@ -1,0 +1,504 @@
+{
+  "meta": {
+    "siteTitle": "Serpent — Snake identification & venom safety",
+    "siteDescription": "Upload a photo to identify a snake and understand its potential venom risk. AI-assisted, safety first, honest about uncertainty.",
+    "identifyTitle": "Identify a snake",
+    "resultTitle": "Result",
+    "speciesTitle": "Species reference",
+    "emergencyTitle": "I've been bitten",
+    "privacyTitle": "Privacy",
+    "notFoundTitle": "Page not found",
+    "speciesNotFoundTitle": "Species not found"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "homeAria": "Serpent home",
+    "mainNav": "Main",
+    "mainMobileNav": "Main mobile",
+    "menu": "Menu",
+    "navIdentify": "Identify",
+    "navSpecies": "Species",
+    "navSpeciesReference": "Species reference",
+    "navPrivacy": "Privacy",
+    "navEmergency": "Emergency guidance",
+    "bitten": "I've been bitten",
+    "emergencyNumber": "Emergency number",
+    "optional": "(optional)",
+    "cancel": "Cancel",
+    "tryAgain": "Try again",
+    "opensInNewTab": "(opens in a new tab)",
+    "notYetTranslated": "Not yet translated",
+    "notYetTranslatedNote": "Not yet translated. Shown in English.",
+    "breadcrumb": "Breadcrumb",
+    "backToSpecies": "← Species reference",
+    "listSeparator": ", "
+  },
+  "language": {
+    "label": "Language",
+    "current": "Current language"
+  },
+  "footer": {
+    "disclaimer": "Serpent gives AI-assisted estimates from photographs. It can be wrong. It is not a substitute for a qualified wildlife professional or medical care. If someone has been bitten, call your local emergency number now.",
+    "unicodeNote": "This site uses Myanmar Unicode."
+  },
+  "home": {
+    "title": "Identify a snake",
+    "lead": "Upload a photo to identify the snake and understand its potential venom risk.",
+    "cta": "Identify snake",
+    "neverApproach": "Never approach or handle a snake to get a better photograph.",
+    "exampleLabel": "Example of a result",
+    "exampleCouldAlsoBe": "Could also be:",
+    "exampleLookAlikeNote": "A photo can't tell them apart reliably.",
+    "howTitle": "How it works",
+    "steps": {
+      "photograph": {
+        "title": "Photograph from where you stand",
+        "body": "Take or upload one photo. Don't move closer; zoom is fine."
+      },
+      "check": {
+        "title": "Check the photo",
+        "body": "Blurry, dark or partial photos get “can’t identify reliably”, not a guess."
+      },
+      "match": {
+        "title": "Match against verified records",
+        "body": "The AI ranks species from a curated database. It can't invent new ones."
+      },
+      "safety": {
+        "title": "Safety first, then details",
+        "body": "You see what to do before you see the species, venom and risk."
+      }
+    },
+    "promisesTitle": "Built to be honest about what a photo can and can’t tell you",
+    "promises": {
+      "harmless": {
+        "title": "It won’t call a snake harmless",
+        "body": "Even a confident non-venomous match comes with a reminder that photos mislead, and a warning when dangerous look-alikes exist."
+      },
+      "score": {
+        "title": "It won’t invent a venom score",
+        "body": "Potency and medical risk are shown separately. If there’s no citable laboratory value, you see that, not a number."
+      },
+      "unknown": {
+        "title": "“Unknown” is a real answer",
+        "body": "When the evidence is weak or conflicting, the result says so and tells you to treat the snake as dangerous."
+      }
+    }
+  },
+  "identify": {
+    "title": "Identify a snake",
+    "lead": "One snake per photo. Show as much of the body and head as you can see from a safe distance.",
+    "warningStrong": "Photograph from where you are.",
+    "warning": "Never move closer to a snake for a better photo.",
+    "addPhotoTitle": "Add a photo",
+    "takePhoto": "Take photo",
+    "uploadPhotos": "Upload photos",
+    "maxPhotos": "You can add up to {max} photos of the same snake, for example the head and the body pattern.",
+    "countryHint": "Optional. Helps rank species found in your area and choose the site language. Saved on this device.",
+    "checkOne": "Check your photo",
+    "checkMany": "Check your photos",
+    "analyzingOne": "Analyzing your photo",
+    "analyzingMany": "Analyzing your photos",
+    "failedTitle": "Analysis didn't finish",
+    "photoAlt": "Your snake photo {n}",
+    "removePhoto": "Remove photo {n}",
+    "lowResOne": "This photo is quite small. Results may be unreliable.",
+    "lowResMany": "One of these photos is quite small. Results may be unreliable.",
+    "analyzeOne": "Analyze photo",
+    "analyzeMany": "Analyze {n} photos",
+    "addPhoto": "Add photo",
+    "uploadMore": "Upload more",
+    "roomOne": "Add up to 1 more photo of the same snake if you have one. Only photograph from where you are.",
+    "roomMany": "Add up to {n} more photos of the same snake if you have them. Only photograph from where you are.",
+    "atMax": "That's the maximum of {max} photos.",
+    "startOver": "Start over",
+    "cantOpenTitle": "That photo couldn't be opened",
+    "chooseAnother": "Choose another photo"
+  },
+  "notice": {
+    "uploadKnown": "Your photo is resized and stripped of location data on this device, then sent to {product}, an AI model by {company}, for analysis. Serpent does not store it.",
+    "uploadUnknown": "Your photo is resized and stripped of location data on this device, then sent to an external AI model for analysis. Serpent does not store it.",
+    "privacyKnown": "Resized and stripped of metadata (including GPS location) on your device, then sent to our server and on to {company}'s {product} API for analysis. Serpent does not save it. It is processed by {company} under its API terms.",
+    "privacyUnknown": "Resized and stripped of metadata (including GPS location) on your device, then sent to our server and on to an external AI provider for analysis. Serpent does not save it."
+  },
+  "progress": {
+    "prepared": "Photo prepared on your device",
+    "sending": "Sending photo ({pct})",
+    "sent": "Photo sent",
+    "analyzing": "AI is examining the photo and matching it against our species database",
+    "done": " — done",
+    "inProgress": " — in progress",
+    "waiting": " — waiting",
+    "usually": "Usually 5–20 seconds."
+  },
+  "errors": {
+    "network": "Couldn't reach the server. Check your connection and try again.",
+    "generic": "Something went wrong. Try again.",
+    "photo": {
+      "not_a_photo": "That file isn't a photo. Use a JPEG, PNG or WebP image.",
+      "too_large_to_open": "That photo is too large to open.",
+      "format_unsupported": "This browser can't open that photo format. Try a JPEG or PNG, or take the photo in the app.",
+      "process_failed": "Couldn't process this photo."
+    },
+    "api": {
+      "rate_limited": "Too many photos in a short time. Wait a minute and try again.",
+      "upload_too_large": "These photos are too large. Try smaller images.",
+      "upload_unreadable": "The upload could not be read. Try again.",
+      "unknown_country": "Unknown country selection.",
+      "too_many_photos": "Send at most {max} photos of the same snake.",
+      "no_photo": "No photo was attached.",
+      "photo_too_large": "This photo is too large. Try a smaller image.",
+      "photo_too_small": "This file is too small to be a usable photo.",
+      "photo_bad_type": "Use a JPEG, PNG or WebP photo.",
+      "photoPrefix": "Photo {n}: {error}"
+    }
+  },
+  "result": {
+    "srTitle": "Identification result",
+    "loading": "Loading result",
+    "noResultTitle": "No result to show",
+    "noResultBody": "Results stay in this browser tab only and are cleared when it closes. Analyze a photo to see one here.",
+    "identifyCta": "Identify a snake",
+    "venomDetailTitle": "Venom and medical risk",
+    "forMostLikely": "For the most likely species, {name}.",
+    "identifyAnother": "Identify another snake",
+    "fullProfile": "Full profile: {name}",
+    "browseSpecies": "Browse species",
+    "tryAnotherPhoto": "Try another photo",
+    "photoAlt": "Your photo",
+    "photoAltN": "Your photo {n}",
+    "mostLikely": "Most likely identification",
+    "closestMatch": "Closest match",
+    "confidence": "Confidence",
+    "family": "Family",
+    "status": "Status",
+    "notYetReviewed": "Not yet reviewed",
+    "venomStatusSr": "Venom status",
+    "listedAs": "The closest match is listed as {status}, but a venomous species can't be ruled out from this photo.",
+    "couldAlsoBe": "Could also be",
+    "lookAlikeWarning": "Look-alike warning",
+    "notAssessed": "Not assessed",
+    "whyTitle": "Why the AI thinks this",
+    "wrongTitle": "What could make this wrong",
+    "geoNone": "Location not provided, so geography wasn't used.",
+    "geoOutside": "Not recorded in {country}; this lowered the ranking.",
+    "geoConsistent": "Consistent with species recorded in {country}.",
+    "variationNote": "Colour, head shape and pattern vary between individuals and can mislead even experts.",
+    "otherPossibilities": "Other possibilities",
+    "otherPossibilitiesLow": "Other possibilities (low confidence)",
+    "mayResemble": "It may resemble (low confidence)",
+    "altNotInArea": "not recorded in your area",
+    "altNotReviewedNotAssessed": "not yet reviewed (venom not assessed)",
+    "altNotReviewedFrom": "not yet reviewed (venom from {level} level)",
+    "showEstimates": "Show model estimates",
+    "estimatesNote": "These are the AI's relative estimates after geographic adjustment, not measured probabilities.",
+    "estimateRow": "{name}: about {pct}",
+    "basisNotAssessed": "Venom not assessed for this species or its genus",
+    "basisFamily": "Venom data from the {name} family",
+    "basisGenus": "Venom data from the {name} ({common}) group",
+    "basisGroup": "Venom data from {common}",
+    "treatDangerous": "Treat this snake as potentially dangerous. If it is in or near a home, contact local wildlife rescue.",
+    "serviceUnavailableNote": "No result was produced, so none is shown. Try again in a moment. Until then, treat the snake as potentially dangerous.",
+    "resultEyebrow": "Result",
+    "engineFooter": "AI estimate from {product} ({model}), {date}. Visual identification can be wrong.",
+    "ifBitten": "If someone was bitten",
+    "getGuidance": "Get emergency guidance now",
+    "call": "Call {number}"
+  },
+  "candidate": {
+    "genus": "{common} (genus {name})",
+    "family": "{common} (family {name})",
+    "group": "{common} ({name})",
+    "unrecognised": "An unrecognised snake",
+    "notInDatabase": "A species not in our database",
+    "level": {
+      "genus": "genus",
+      "family": "family"
+    }
+  },
+  "status": {
+    "likely_identified": "Most likely identification shown below. Visual identification can be wrong.",
+    "conflicting_evidence": "Several species with different venom profiles match this photo. Do not rely on this result to decide whether the snake is safe.",
+    "unknown_species": "We couldn't identify this snake reliably.",
+    "insufficient_image": "The image is not clear enough for reliable identification.",
+    "no_snake": "We couldn't detect a snake in this image.",
+    "multiple_snakes": "Multiple snakes detected. Please analyze one snake at a time.",
+    "service_unavailable": "Identification service is temporarily unavailable."
+  },
+  "issues": {
+    "blur": "The photo is blurred.",
+    "low_light": "The photo is too dark.",
+    "partially_hidden": "Part of the snake is hidden.",
+    "too_small": "The snake is too small in the frame.",
+    "obstructed": "Something is blocking the view of the snake.",
+    "low_resolution": "The photo resolution is too low.",
+    "multiple_snakes": "More than one snake is visible.",
+    "no_snake": "No snake was found in the photo.",
+    "not_a_live_snake_photo": "This doesn't look like a photo of a real snake."
+  },
+  "venomStatus": {
+    "venomous": {
+      "label": "Venomous",
+      "inline": "venomous",
+      "short": "Medically significant venom"
+    },
+    "potentially_venomous": {
+      "label": "Potentially venomous",
+      "inline": "potentially venomous",
+      "short": "Cannot be ruled out from this photo"
+    },
+    "mildly_venomous": {
+      "label": "Mildly venomous",
+      "inline": "mildly venomous",
+      "short": "Venom usually causes only local symptoms"
+    },
+    "non_venomous": {
+      "label": "Non-venomous (most likely)",
+      "inline": "non-venomous (most likely)",
+      "short": "Not considered venomous"
+    },
+    "unknown": {
+      "label": "Unknown",
+      "inline": "unknown",
+      "short": "Not enough evidence"
+    },
+    "nonVenomousSpecies": "Non-venomous",
+    "nonVenomousSpeciesInline": "non-venomous"
+  },
+  "venomType": {
+    "neurotoxic": {
+      "label": "Neurotoxic",
+      "description": "Affects the nervous system. Can interfere with muscle control and breathing."
+    },
+    "hemotoxic": {
+      "label": "Hemotoxic",
+      "description": "Affects blood clotting and can cause bleeding or damage to blood vessels."
+    },
+    "cytotoxic": {
+      "label": "Cytotoxic",
+      "description": "Damages tissue around the bite, causing swelling and blistering."
+    },
+    "myotoxic": {
+      "label": "Myotoxic",
+      "description": "Damages muscle tissue."
+    },
+    "cardiotoxic": {
+      "label": "Cardiotoxic",
+      "description": "Can affect how the heart works."
+    }
+  },
+  "risk": {
+    "low": "Low",
+    "moderate": "Moderate",
+    "high": "High",
+    "very_high": "Very high",
+    "unknown": "Unknown",
+    "medicalRisk": "Medical risk",
+    "riskLabel": "{risk} risk"
+  },
+  "band": {
+    "high": "High confidence",
+    "moderate": "Moderate confidence",
+    "low": "Low confidence"
+  },
+  "safety": {
+    "keepDistance": "Keep your distance",
+    "actions": {
+      "stayBack": "Stay well back and give the snake a clear path to leave.",
+      "noTouch": "Do not touch, catch, corner or try to kill the snake.",
+      "children": "Keep children and pets away from the area.",
+      "rescue": "If the snake is inside a home or busy area, contact local wildlife rescue or emergency services.",
+      "retake": "If you try again, photograph from where you are. Do not move closer for a better shot.",
+      "spitting": "This species can spray venom toward the eyes. Keep well back and protect your face."
+    },
+    "lookAlike": "This snake may resemble species with different venom profiles. Identification from a photograph is not reliable enough to rule out a dangerous species. Do not approach it.",
+    "bittenPrompt": "Has someone been bitten?",
+    "getGuidance": "Get emergency guidance now"
+  },
+  "notes": {
+    "typo": "The AI wrote \"{namedAs}\"; the closest recognised name is {resolved}.",
+    "unreviewedInGroup": "{name} is a recognised species that Serpent hasn't reviewed yet. It belongs to {common} ({group}), which we treat as venomous.",
+    "unreviewedNotAssessed": "{name} is a recognised species that Serpent hasn't reviewed yet, and its venom hasn't been assessed. Treat it as potentially venomous.",
+    "groupPoints": "It points to {common} ({group}), which we treat as venomous.",
+    "groupSuggested": "The AI suggested \"{namedAs}\", which isn't a recognised species name. It points to {common} ({group}), which we treat as venomous.",
+    "unrecognised": "The AI suggested \"{namedAs}\", which isn't a recognised snake name, so its venom status could not be checked.",
+    "notInDatabase": "The photo may show a species that is not in our database.",
+    "partialOnly": "Only part of the snake could be assessed, so these are low-confidence possibilities, not an identification.",
+    "outsideCountry": "This species is not recorded in {country}. The result was down-weighted but not excluded.",
+    "secondOpinionAgreed": "Two independent analyses agreed on the closest match.",
+    "secondOpinionDisagreed": "Two independent analyses disagreed on the closest match, so confidence stays limited.",
+    "legacyResult": "This result was saved before translations were available, so its safety text is shown in English."
+  },
+  "report": {
+    "sent": "Thank you. Your report was sent anonymously and will be reviewed to improve identifications.",
+    "open": "This identification looks wrong",
+    "title": "Report a wrong identification",
+    "lead": "Sent anonymously with this result's ID. Your photo is not sent. Please don't include personal details.",
+    "speciesLabel": "What species do you think it is?",
+    "noteLabel": "Anything else?",
+    "send": "Send report",
+    "sending": "Sending…",
+    "failed": "The report could not be sent. Try again later.",
+    "failedNetwork": "The report could not be sent. Check your connection and try again.",
+    "unavailable": "Reporting isn't available right now.",
+    "rateLimited": "Too many reports in a short time. Try again later.",
+    "unreadable": "The report could not be read."
+  },
+  "emergency": {
+    "srTitle": "Snakebite emergency",
+    "callNow": "Call for medical help now",
+    "treatEvery": "Treat every snakebite as an emergency, even if there is little pain or the snake looked small. Some venoms cause no early symptoms.",
+    "noVerifiedNumber": "Call your local emergency number. We don't have a verified number for {country} yet.",
+    "chooseCountry": "Call your local emergency number. Choose your country below to see it here.",
+    "numbersDisclaimer": "Numbers are listed for convenience and may change. If a number does not connect, use any local emergency number you know.",
+    "firstAidTitle": "First aid",
+    "firstAidLead": "First aid buys time; it does not treat the bite. Antivenom and hospital monitoring do. If the emergency operator gives different instructions, follow the operator.",
+    "sourcesTitle": "Where this guidance comes from"
+  },
+  "firstAid": {
+    "doTitle": "While you get help",
+    "dontTitle": "Do not",
+    "do": {
+      "moveAway": "Move away from the snake to a safe place.",
+      "call": "Call your local emergency number or get to a hospital now, even if you feel fine. Some venoms cause few early symptoms.",
+      "calm": "Keep the person calm and as still as possible. Movement can speed the spread of venom.",
+      "limb": "Keep the bitten limb still, for example with a splint or sling.",
+      "rings": "Remove rings, watches, bracelets and tight clothing near the bite before swelling starts.",
+      "time": "Note the time of the bite and any symptoms as they appear.",
+      "eyes": "If venom was sprayed into the eyes, rinse them with plenty of clean water."
+    },
+    "dont": {
+      "cut": "Do not cut the wound.",
+      "suck": "Do not try to suck out the venom.",
+      "tourniquet": "Do not apply a tight tourniquet.",
+      "ice": "Do not put ice on the bite.",
+      "remedies": "Do not drink alcohol or take herbal or traditional remedies.",
+      "catch": "Do not try to catch or kill the snake. A photo from a safe distance is enough.",
+      "wait": "Do not wait to see if symptoms develop."
+    },
+    "regional": {
+      "auPressure": "In Australia, a pressure immobilisation bandage is standard first aid for snakebite. The emergency operator can talk you through applying it.",
+      "auNoWash": "In Australia, do not wash the bite site. Hospitals may test it to identify the venom."
+    }
+  },
+  "contacts": {
+    "emergencyServices": "Emergency services",
+    "emergencyMedical": "Emergency medical services",
+    "ambulance": "Ambulance",
+    "ambulanceFire": "Ambulance & fire",
+    "ambulanceMostStates": "Ambulance (most states)",
+    "emergencyFromMobile": "Emergency from mobile",
+    "ramathibodiPoison": "Ramathibodi Poison Center",
+    "poisonAdvice24h": "24-hour poison advice",
+    "auPoisonsCentre": "Poisons Information Centre",
+    "usPoisonHelp": "Poison Help line",
+    "nhs111": "NHS 111",
+    "nhs111Note": "For urgent medical advice; call 999 for a snakebite emergency"
+  },
+  "country": {
+    "label": "Where are you?",
+    "unknown": "Location unknown"
+  },
+  "regions": {
+    "south_asia": "South Asia",
+    "southeast_asia": "Southeast Asia",
+    "east_asia": "East Asia",
+    "australia_png": "Australia & New Guinea",
+    "north_america": "North America",
+    "sub_saharan_africa": "Sub-Saharan Africa",
+    "europe": "Europe"
+  },
+  "speciesList": {
+    "title": "Species reference",
+    "lead": "Reviewed species are listed first. Search also covers every other recognised snake species; those pages show names and distribution from The Reptile Database, with venom data from genus level or not yet assessed. Reviewed records are drafts awaiting expert review; each page says what has and hasn't been verified.",
+    "searchLabel": "Search by name, family or country",
+    "searchPlaceholder": "Common or scientific name",
+    "region": "Region",
+    "allRegions": "All regions",
+    "venomStatus": "Venom status",
+    "anyStatus": "Any venom status",
+    "venomType": "Venom type",
+    "anyType": "Any venom type",
+    "highRiskOnly": "High medical risk only",
+    "countReviewed": "{n} reviewed species",
+    "countMore": "{n} more not yet reviewed",
+    "noMatch": "No species match these filters.",
+    "clearFilters": "Clear filters",
+    "otherTitle": "Other recognised species (not yet reviewed)",
+    "otherLead": "Names from The Reptile Database. Venom data for these comes from genus or family level, or is not assessed.",
+    "optionCount": "{n} species",
+    "currentFilters": "Current filters"
+  },
+  "species": {
+    "alsoCalled": "Also called {names}",
+    "family": "Family",
+    "subfamily": "Subfamily",
+    "genus": "Genus",
+    "regions": "Regions",
+    "draftNote": "Draft record. This information has not yet been checked by a qualified reviewer against its sources.",
+    "appearance": "Appearance",
+    "featuresTitle": "Features used for identification",
+    "featuresNote": "No single feature is reliable on its own. Individuals vary.",
+    "distribution": "Distribution",
+    "habitat": "Habitat",
+    "venomTitle": "Venom and medical risk",
+    "similarTitle": "Similar species",
+    "sources": "Sources",
+    "source": "Source",
+    "notReviewedGroupStrong": "Not yet reviewed: venom data from {level} level.",
+    "notReviewedGroupBody": "This species belongs to {common} ({name}), which Serpent treats as dangerously venomous. Its own venom and medical risk have not been reviewed.",
+    "notReviewedNoneStrong": "Not yet reviewed: venom not assessed.",
+    "notReviewedNoneBody": "Serpent has no venom data for this species or its genus, so identifications show it as potentially venomous. Do not assume it is harmless.",
+    "distributionNote": "As recorded in the source. This release can omit part of a species' range, so absence from this list does not mean the species is absent from an area.",
+    "noDistribution": "The source has no distribution for this species.",
+    "otherNames": "Other names",
+    "synonyms": "Scientific synonyms ({n})",
+    "namesSource": "Names, classification and distribution:",
+    "speciesAccount": "{title} species account",
+    "licence": "Licence",
+    "adapted": "Adapted for Serpent: filtered to snakes and reformatted.",
+    "venomRuleGroup": "Venom status is Serpent's own {level}-level rule, not part of the source.",
+    "venomRuleDefault": "Venom status is Serpent's own fail-safe default, not part of the source."
+  },
+  "venomPanel": {
+    "howStrong": "How strong is the venom?",
+    "riskExplainer": "Medical risk is how dangerous a real bite can be to a person: it weighs venom, typical amount delivered, how often bites happen and how they are treated. {risk} indicates potential severity, not a guaranteed outcome.",
+    "potencyTitle": "Venom potency",
+    "potencyDesc": "How toxic the venom is under standardized laboratory tests.",
+    "noPotency": "No sourced laboratory value yet. We don't show a number we can't cite.",
+    "antivenomTitle": "Antivenom",
+    "noAntivenom": "Availability not yet sourced. Hospitals and poison centres know which antivenom is used locally.",
+    "profileTitle": "Venom profile",
+    "mildProfile": "Mild venom; no medically significant toxin activity is recorded for this species.",
+    "notVenomousProfile": "Not considered venomous.",
+    "noProfile": "Venom profile not established.",
+    "effectsTitle": "Effects reported after bites"
+  },
+  "sources": {
+    "none": "No sources linked yet. This record needs sourcing before launch.",
+    "verified": "Verified {date}",
+    "notVerified": "Not yet verified by a reviewer"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "lead": "What happens to your photo and data.",
+    "photo": "Your photo",
+    "result": "Your result",
+    "resultBody": "Kept in this browser tab only, together with a small thumbnail, and cleared when you close the tab.",
+    "location": "Your location",
+    "locationBody": "Only the country you choose, if any. It's remembered on this device and in a cookie that lets the site pick your language on a first visit. We never request GPS.",
+    "language": "Your language",
+    "languageBody": "If you choose a language, it's saved in a cookie on this device so the site opens in that language next time.",
+    "reports": "Reports you send",
+    "reportsBody": "If you report a wrong identification, we store the result ID, what was shown, and the species and note you typed. No image, IP address or account.",
+    "logs": "What we log",
+    "logsBody": "An anonymous record of each analysis: the outcome, the top species and the confidence. No image, no IP address, no account.",
+    "rateLimit": "Rate limiting",
+    "rateLimitBody": "Your network address is held briefly in memory to stop abuse, and is never written to storage."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "That page doesn't exist. If someone has been bitten, go straight to emergency guidance.",
+    "identify": "Identify a snake",
+    "bitten": "I've been bitten"
+  }
+}

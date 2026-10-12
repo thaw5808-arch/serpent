@@ -1,0 +1,141 @@
+// SERPENT database schema.
+// The curated knowledge base's source of truth is src/data (reviewed in git);
+// `npm run db:seed` mirrors it here for future admin/reviewer tooling.
+// Uploaded photos are never stored.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum VenomStatus {
+  venomous
+  mildly_venomous
+  non_venomous
+  unknown
+}
+
+enum MedicalRisk {
+  low
+  moderate
+  high
+  very_high
+  unknown
+}
+
+enum ReviewStatus {
+  draft
+  expert_reviewed
+}
+
+model Species {
+  id              String        @id // slug, e.g. "king-cobra"
+  commonName      String
+  otherNames      String[]
+  scientificName  String        @unique
+  family          String
+  genus           String
+  description     String        // appearance
+  keyFeatures     String[]
+  distribution    String
+  regions         String[]
+  habitat         String
+  venomStatus     VenomStatus
+  riskLevel       MedicalRisk
+  reviewStatus    ReviewStatus  @default(draft)
+  lastVerified    DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  venomProfile    VenomProfile?
+  sources         SpeciesSource[]
+  similarTo       SimilarSpecies[] @relation("from")
+  similarFrom     SimilarSpecies[] @relation("to")
+  identifications Identification[]
+}
+
+model VenomProfile {
+  id                   String      @id @default(cuid())
+  speciesId            String      @unique
+  species              Species     @relation(fields: [speciesId], references: [id], onDelete: Cascade)
+  venomTypes           String[]    // neurotoxic | hemotoxic | cytotoxic | myotoxic | cardiotoxic
+  medicalEffects       String[]
+  riskLevel            MedicalRisk
+  riskRationale        String
+  potencyValue         String?     // only with a citable source
+  potencyMethod        String?
+  potencySourceId      String?
+  antivenomInformation String?     // only with a citable source
+  verifiedAt           DateTime?
+}
+
+model Source {
+  id              String          @id
+  title           String
+  publisher       String
+  url             String?
+  sourceType      String
+  publicationYear Int?
+  verifiedAt      DateTime?
+  species         SpeciesSource[]
+}
+
+model SpeciesSource {
+  speciesId String
+  sourceId  String
+  species   Species @relation(fields: [speciesId], references: [id], onDelete: Cascade)
+  source    Source  @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@id([speciesId, sourceId])
+}
+
+model SimilarSpecies {
+  fromId String
+  toId   String
+  from   Species @relation("from", fields: [fromId], references: [id], onDelete: Cascade)
+  to     Species @relation("to", fields: [toId], references: [id], onDelete: Cascade)
+
+  @@id([fromId, toId])
+}
+
+/// Anonymous analysis log. No image, no IP, no precise location.
+model Identification {
+  id                 String       @id
+  status             String
+  speciesId          String?
+  species            Species?     @relation(fields: [speciesId], references: [id], onDelete: SetNull)
+  confidence         Float?
+  confidenceBand     String?
+  displayVenomStatus String
+  countryCode        String?
+  provider           String
+  model              String
+  createdAt          DateTime     @default(now())
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+/// "This identification looks wrong" reports. Anonymous: no image, no IP, no
+/// account. Stores what was shown (a snapshot, since the analysis log is optional)
+/// plus the user's optional correction and note, for turning into catalog fixes.
+model MisidentificationReport {
+  id                 String   @id @default(cuid())
+  resultId           String
+  suggestedSpecies   String?
+  note               String?
+  resultStatus       String
+  shownLabel         String?
+  displayVenomStatus String
+  countryCode        String?
+  provider           String
+  model              String
+  createdAt          DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([resultId])
+}
