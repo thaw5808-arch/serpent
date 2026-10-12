@@ -41,18 +41,18 @@
 
   /* Font stacks. Thai and Burmese pages add their Noto faces after the Latin ones,
      so names and numbers keep the Latin faces and the script falls through to Noto. */
-  --font-ui: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  --font-ui: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Source Serif 4 Variable", "Source Serif Pro", Georgia, serif;
 }
 
 html:lang(th) {
-  --font-ui: var(--font-schibsted), var(--font-noto-sans-thai), ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Source Serif 4 Variable", var(--font-noto-serif-thai), var(--font-noto-sans-thai), Georgia, serif;
+  --font-ui: "Schibsted Grotesk Variable", "Noto Sans Thai Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4 Variable", "Noto Serif Thai Variable", "Noto Sans Thai Variable", Georgia, serif;
 }
 
 html:lang(my) {
-  --font-ui: var(--font-schibsted), var(--font-noto-sans-myanmar), ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Source Serif 4 Variable", var(--font-noto-serif-myanmar), var(--font-noto-sans-myanmar), Georgia, serif;
+  --font-ui: "Schibsted Grotesk Variable", "Noto Sans Myanmar Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4 Variable", "Noto Serif Myanmar", "Noto Sans Myanmar Variable", Georgia, serif;
 }
 
 @media (min-width: 768px) {
