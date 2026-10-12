@@ -11,6 +11,7 @@ export function MobileMenu() {
   const links = [
     { href: "/identify", label: t.common.navIdentify },
     { href: "/species", label: t.common.navSpeciesReference },
+    { href: "/near-me", label: t.common.navNearMe },
     { href: "/history", label: t.common.navHistory },
     { href: "/privacy", label: t.common.navPrivacy },
   ];

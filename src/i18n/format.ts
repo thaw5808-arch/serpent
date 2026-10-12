@@ -41,6 +41,12 @@ export function formatDate(isoDate: string, locale: Locale): string {
   return new Intl.DateTimeFormat(INTL[locale], { dateStyle: "long", timeZone: "UTC" }).format(d);
 }
 
+/** A calendar year, e.g. 2024 (2567 in Thai, which uses the Buddhist era like the dates above). */
+export function formatYear(year: number, locale: Locale): string {
+  if (!hasData(Intl.DateTimeFormat, locale)) return String(year);
+  return new Intl.DateTimeFormat(latn(locale), { year: "numeric", timeZone: "UTC" }).format(Date.UTC(year, 6, 1));
+}
+
 /** Burmese names for the countries we list, for browsers without Burmese locale data. DRAFT, see REVIEW.md. */
 const MY_COUNTRY_NAMES: Record<string, string> = {
   TH: "ထိုင်း", MY: "မလေးရှား", SG: "စင်္ကာပူ", VN: "ဗီယက်နမ်", PH: "ဖိလစ်ပိုင်", ID: "အင်ဒိုနီးရှား",

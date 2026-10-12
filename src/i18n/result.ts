@@ -74,7 +74,7 @@ export function candidateLabel(c: CandidateView, t: Messages): string {
 }
 
 /** Where a candidate's venom status comes from, when it isn't a reviewed species. */
-export function venomBasisText(c: CandidateView, t: Messages, locale: Locale): string | null {
+export function venomBasisText(c: Pick<CandidateView, "venomBasis" | "venomGroup">, t: Messages, locale: Locale): string | null {
   if (c.venomBasis === "not_assessed") return t.result.basisNotAssessed;
   const g = c.venomGroup;
   if (!g) return null;

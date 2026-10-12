@@ -31,3 +31,9 @@ function prune(now: number) {
 export function __resetRateLimit() {
   buckets.clear();
 }
+
+/** The caller's address, used only as an in-memory rate-limit key; never logged or stored. */
+export function clientKey(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for");
+  return fwd?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "local";
+}

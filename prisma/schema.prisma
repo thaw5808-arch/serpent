@@ -139,3 +139,20 @@ model MisidentificationReport {
   @@index([createdAt])
   @@index([resultId])
 }
+
+/// "Snakes near me" cache: GBIF's answer for a rounded point (0.1°, about 11 km),
+/// kept for 30 days so repeated searches don't hit GBIF. Nothing about who searched:
+/// no IP, no account, no precise location.
+model SightingCache {
+  id        String   @id @default(cuid())
+  lat       Float
+  lng       Float
+  /// "open" = CC0 and CC BY records only; "all" also includes CC BY-NC (GBIF_INCLUDE_NC=true).
+  licenses  String
+  cityName  String
+  /// GBIF counts per species (src/services/nearMe/gbif.ts GbifArea), not our venom classification.
+  results   Json
+  fetchedAt DateTime
+
+  @@unique([lat, lng, licenses])
+}

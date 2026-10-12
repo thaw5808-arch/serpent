@@ -19,6 +19,7 @@ export async function SiteHeader() {
         <nav aria-label={t.common.mainNav} className="hidden items-center gap-6 text-small font-medium text-ink-2 md:flex">
           <Link href="/identify" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navIdentify}</Link>
           <Link href="/species" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navSpecies}</Link>
+          <Link href="/near-me" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navNearMe}</Link>
           <Link href="/history" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navHistory}</Link>
         </nav>
         <LanguageSwitcher className="ml-auto hidden md:block" />
