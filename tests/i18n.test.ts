@@ -42,6 +42,25 @@ describe("message files", () => {
     expect(flattenKeys(DICTS[locale]).filter((k) => !keys.has(k))).toEqual([]);
   });
 
+  // The History feature's text, listed so a renamed or dropped key fails here and not on screen.
+  const HISTORY_KEYS = [
+    "common.navHistory",
+    "meta.historyTitle",
+    "privacy.history",
+    "privacy.historyBody",
+    ...[
+      "title", "lead", "loading", "countOne", "countMany", "noMatch", "deleteEntry", "deleted", "clearAll", "clearConfirm",
+      "clearConfirmButton", "cleared", "actionFailed", "emptyTitle", "emptyBody", "identifyCta", "unavailableTitle",
+      "unavailableBody", "settingsTitle", "saveSetting", "saveSettingHint", "privacyNote", "privacyLink", "back", "savedSr",
+      "savedFrom", "currentSpecies", "notFoundTitle", "notFoundBody", "savedHere", "dontSave", "removed",
+    ].map((k) => `history.${k}`),
+  ];
+
+  it.each(LOCALES)("%s has every History key", (locale) => {
+    const keys = new Set(flattenKeys(DICTS[locale]));
+    expect(HISTORY_KEYS.filter((k) => !keys.has(k))).toEqual([]);
+  });
+
   it.each(LOCALES)("%s: every message is a non-empty string", (locale) => {
     for (const [key, value] of leaves(DICTS[locale])) {
       expect(typeof value, key).toBe("string");

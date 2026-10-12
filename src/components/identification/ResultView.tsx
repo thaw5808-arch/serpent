@@ -419,7 +419,8 @@ function candidateKey(c: CandidateView): string {
   return c.speciesId ?? c.taxonomySlug ?? c.groupId ?? c.namedAs ?? "unlisted";
 }
 
-function candidateHref(c: CandidateView): string | null {
+/** The species page for a candidate, when it has one. */
+export function candidateHref(c: CandidateView): string | null {
   if (c.kind === "species" && c.speciesId) return `/species/${c.speciesId}`;
   if (c.kind === "taxonomy" && c.taxonomySlug) return `/species/${c.taxonomySlug}`;
   return null;

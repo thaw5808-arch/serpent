@@ -12,6 +12,7 @@ import type { Messages } from "@/i18n/messages";
 import { useCountry } from "@/lib/useCountry";
 import { prepareImage, PrepareImageError, type PreparedImage } from "@/lib/compressImage";
 import { MAX_PHOTOS_PER_REQUEST } from "@/lib/imageValidation";
+import { deleteFromHistory, saveToHistory } from "@/lib/history";
 import { saveResult } from "@/lib/resultStore";
 import type { IdentificationResult } from "@/types";
 import { AnalysisProgress, type Phase } from "./AnalysisProgress";
@@ -21,6 +22,9 @@ type State =
   | { step: "preview"; images: PreparedImage[]; message?: string }
   | { step: "working"; images: PreparedImage[]; phase: Phase; uploadPct: number }
   | { step: "error"; images: PreparedImage[]; message: string };
+
+/** How long the result waits for History to save before showing anyway. */
+const HISTORY_SAVE_WAIT_MS = 1500;
 
 type ApiError = { error?: string; code?: string; photo?: number };
 
@@ -131,11 +135,23 @@ export function IdentifyFlow({ notice }: { notice: ReactNode }) {
         setState({ step: "error", images: photos, message: apiErrorText(body, t) });
         return;
       }
-      saveResult(body, photos.map((p) => p.thumbnail));
-      // The request is done. Leaving hides this route, which runs clearFlow above, so the photos
-      // and preview URLs are released without flashing the empty step before /result appears.
-      xhrRef.current = null;
-      router.push(localePath(locale, "/result"));
+      const thumbnails = photos.map((p) => p.thumbnail);
+      saveResult(body, thumbnails);
+      // Saved on this device only (and only if History is on), before /result checks for it.
+      // Storage that is slow or blocked never holds up the result.
+      const saved = saveToHistory(body, thumbnails);
+      void Promise.race([saved, new Promise((r) => setTimeout(r, HISTORY_SAVE_WAIT_MS))]).then(() => {
+        if (!current()) {
+          // Cancelled while saving: the user never saw this result, so it doesn't belong in History
+          // (wait for the save itself, which may finish after the timeout).
+          void saved.then((entry) => entry && deleteFromHistory(entry.id));
+          return;
+        }
+        // The request is done. Leaving hides this route, which runs clearFlow above, so the photos
+        // and preview URLs are released without flashing the empty step before /result appears.
+        xhrRef.current = null;
+        router.push(localePath(locale, "/result"));
+      });
     };
     xhr.send(form);
   }

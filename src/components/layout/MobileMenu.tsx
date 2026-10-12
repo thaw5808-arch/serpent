@@ -11,6 +11,7 @@ export function MobileMenu() {
   const links = [
     { href: "/identify", label: t.common.navIdentify },
     { href: "/species", label: t.common.navSpeciesReference },
+    { href: "/history", label: t.common.navHistory },
     { href: "/privacy", label: t.common.navPrivacy },
   ];
   const [open, setOpen] = useState(false);

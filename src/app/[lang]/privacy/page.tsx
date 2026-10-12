@@ -16,6 +16,7 @@ export default async function PrivacyPage() {
   const points: [string, ReactNode][] = [
     [p.photo, <PhotoPrivacyText key="photo" t={t} />],
     [p.result, p.resultBody],
+    [p.history, p.historyBody],
     [p.location, p.locationBody],
     [p.language, p.languageBody],
     [p.reports, p.reportsBody],

@@ -3,6 +3,7 @@ import { useMemo, useSyncExternalStore } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { useT } from "@/i18n/client";
 import { thumbnailsOf, type StoredResult } from "@/lib/resultStore";
+import { SavedToHistory } from "@/components/history/SavedToHistory";
 import { ResultView } from "./ResultView";
 
 const KEY = "serpent:result";
@@ -44,5 +45,10 @@ export function ResultScreen() {
     );
   }
 
-  return <ResultView result={stored.result} thumbnails={thumbnailsOf(stored)} />;
+  return (
+    <>
+      <ResultView result={stored.result} thumbnails={thumbnailsOf(stored)} />
+      {stored.result.status !== "service_unavailable" && <SavedToHistory resultId={stored.result.id} />}
+    </>
+  );
 }
