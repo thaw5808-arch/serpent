@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { History as HistoryIcon, ImageOff, MessageSquareText, Trash2 } from "lucide-react";
+import { History as HistoryIcon, ImageOff, MessageSquareText, Stethoscope, Trash2 } from "lucide-react";
+import { doctorCardHref } from "@/components/doctorCard/DoctorCardLink";
 import { candidateHrefOf, DescriptionResultView } from "@/components/describe/DescriptionResultView";
 import { candidateHref, ResultView } from "@/components/identification/ResultView";
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -180,7 +181,7 @@ function HistoryList({
                 const date = formatDateTime(entry.savedAt, locale);
                 const country = countryName(entry.country, locale);
                 return (
-                  <li key={entry.id} className="flex items-center gap-2">
+                  <li key={entry.id} className="flex flex-wrap items-center gap-x-2">
                     <Link
                       href={`/history?entry=${encodeURIComponent(entry.id)}`}
                       className="flex min-w-0 flex-1 items-start gap-4 py-4 pr-2 hover:bg-surface-2 sm:px-2"
@@ -208,6 +209,13 @@ function HistoryList({
                     >
                       <Trash2 aria-hidden className="size-5" />
                     </button>
+                    <Link
+                      href={doctorCardHref(entry.id)}
+                      aria-label={`${t.doctorCard.entry}: ${s.name}, ${date}`}
+                      className="mb-3 inline-flex min-h-11 basis-full items-center gap-2 text-small font-medium text-ink underline underline-offset-4 sm:ml-[6.5rem] sm:basis-auto"
+                    >
+                      <Stethoscope aria-hidden className="size-4 shrink-0 text-critical" /> {t.doctorCard.entry}
+                    </Link>
                   </li>
                 );
               })}

@@ -4,6 +4,7 @@ import { getCountry } from "@/data/countries";
 import { useLocale, useT } from "@/i18n/client";
 import { countryName, fmt } from "@/i18n/format";
 import { useCountry } from "@/lib/useCountry";
+import { DoctorCardLink } from "@/components/doctorCard/DoctorCardLink";
 import { CountrySelect } from "./CountrySelect";
 import { FirstAid } from "./FirstAid";
 
@@ -62,6 +63,11 @@ export function EmergencyPanel() {
             {country ? fmt(t.emergency.noVerifiedNumber, { country: countryName(country.code, locale) }) : t.emergency.chooseCountry}
           </p>
         )}
+
+        <div className="mt-6 rounded-card border-2 border-critical p-4">
+          <p className="text-small">{t.doctorCard.emergencyEntryLead}</p>
+          <DoctorCardLink label={t.doctorCard.entry} className="mt-3 min-h-15 text-lead" />
+        </div>
 
         <div className="mt-6 border-t border-line pt-5">
           <CountrySelect value={code} onChange={setCode} id="emergency-country" />

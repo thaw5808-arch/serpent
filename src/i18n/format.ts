@@ -89,3 +89,11 @@ export function monthName(month: number, locale: Locale, style: "long" | "short"
   if (locale === "my" && !hasData(Intl.DateTimeFormat, locale)) return MY_MONTHS[style][month - 1] ?? String(month);
   return new Intl.DateTimeFormat(INTL[locale], { month: style, timeZone: "UTC" }).format(Date.UTC(2024, month - 1, 15));
 }
+
+/** A clock time such as "14:32" (Western digits in every language, so times read the same on every card). */
+export function formatTime(iso: string, locale: Locale): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  if (!hasData(Intl.DateTimeFormat, locale)) return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  return new Intl.DateTimeFormat(latn(locale), { timeStyle: "short" }).format(d);
+}

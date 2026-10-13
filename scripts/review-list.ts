@@ -6,7 +6,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
-import { reviewKeys } from "../src/i18n/review";
+import { isHighPriority, reviewKeys } from "../src/i18n/review";
 
 const file = path.join(__dirname, "..", "messages", "REVIEW.md");
 const ROW = /^\| `([^`]+)` \| ([^|]+) \| ([^|]+) \|$/;
@@ -19,10 +19,14 @@ if (existsSync(file)) {
   }
 }
 
-const rows = reviewKeys().map((key) => {
+const row = (key: string) => {
   const s = previous.get(key) ?? { th: "reviewed: no", my: "reviewed: no" };
   return `| \`${key}\` | ${s.th} | ${s.my} |`;
-});
+};
+const keys = reviewKeys();
+const high = keys.filter(isHighPriority).map(row);
+const rows = keys.filter((k) => !isHighPriority(k)).map(row);
+const HEADER = "| Key | th | my |\n| --- | --- | --- |";
 
 writeFileSync(
   file,
@@ -42,9 +46,18 @@ How to review:
 
 Burmese text must be Myanmar Unicode, never Zawgyi.
 
-| Key | th | my |
-| --- | --- | --- |
+## High priority: read by doctors and hospital staff
+
+The "Show the doctor" card is shown to hospital staff during an emergency, often in a
+language the patient doesn't read. Review these first.
+
+${HEADER}
+${high.join("\n")}
+
+## All other safety-critical text
+
+${HEADER}
 ${rows.join("\n")}
 `,
 );
-console.log(`Wrote ${rows.length} keys to ${path.relative(process.cwd(), file)}`);
+console.log(`Wrote ${high.length + rows.length} keys (${high.length} high priority) to ${path.relative(process.cwd(), file)}`);

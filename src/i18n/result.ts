@@ -64,7 +64,7 @@ export function localizeSafety(result: ResultText, t: Messages, locale: Locale):
 }
 
 /** A candidate's display name. Names stay as given; only the words around them are translated. */
-export function candidateLabel(c: CandidateView, t: Messages): string {
+export function candidateLabel(c: CandidateView, t: Pick<Messages, "candidate">): string {
   if (c.kind === "group" && c.venomGroup) {
     const g = c.venomGroup;
     return fmt(t.candidate[g.rank], { common: g.commonName, name: g.name });

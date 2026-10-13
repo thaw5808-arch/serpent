@@ -1,6 +1,7 @@
 "use client";
 import type { ReactNode, Ref } from "react";
 import { AlertTriangle, ChevronDown, Info, RotateCcw, Siren } from "lucide-react";
+import { DoctorCardLink } from "@/components/doctorCard/DoctorCardLink";
 import { KeepDistance } from "@/components/safety/KeepDistance";
 import { EmergencyCallBar } from "@/components/safety/EmergencyBar";
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -74,6 +75,7 @@ export function DescriptionResultView({
 
       <div className="space-y-3">
         <EmergencyCallBar />
+        <DoctorCardLink resultId={result.id} />
         <div className="grid gap-3 sm:grid-cols-2">
           <ButtonLink href="/identify">{t.describe.result.photoInstead}</ButtonLink>
           {onStartOver ? (

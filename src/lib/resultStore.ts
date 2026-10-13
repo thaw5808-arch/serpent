@@ -1,5 +1,5 @@
 "use client";
-import type { IdentificationResult } from "@/types";
+import type { DescriptionResult, IdentificationResult } from "@/types";
 
 /**
  * The latest result lives in sessionStorage only: it survives a refresh, is
@@ -46,5 +46,25 @@ export function clearResult() {
     sessionStorage.removeItem(KEY);
   } catch {
     /* ignore */
+  }
+}
+
+/** The latest "Describe a snake" result, for this tab only (so a doctor card can use it even with History off). */
+const DESCRIBED_KEY = "serpent:described";
+
+export function saveDescribed(result: DescriptionResult) {
+  try {
+    sessionStorage.setItem(DESCRIBED_KEY, JSON.stringify(result));
+  } catch {
+    /* storage unavailable */
+  }
+}
+
+export function loadDescribed(): DescriptionResult | null {
+  try {
+    const raw = sessionStorage.getItem(DESCRIBED_KEY);
+    return raw ? (JSON.parse(raw) as DescriptionResult) : null;
+  } catch {
+    return null;
   }
 }

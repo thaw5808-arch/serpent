@@ -9,6 +9,7 @@ import { useT } from "@/i18n/client";
 import { fmt } from "@/i18n/format";
 import type { Messages } from "@/i18n/messages";
 import { saveToHistory } from "@/lib/history";
+import { saveDescribed } from "@/lib/resultStore";
 import {
   BEHAVIOURS,
   COLOURS,
@@ -126,6 +127,7 @@ export function DescribeFlow({ notice }: { notice: ReactNode }) {
         setState({ phase: "error", message: errorText(res.status, body?.code, t) });
         return;
       }
+      saveDescribed(body);
       // Saved on this device only, and only when "Save my results" is on. Slow or blocked storage never holds up the result.
       await Promise.race([saveToHistory(body, []), new Promise((r) => setTimeout(r, HISTORY_SAVE_WAIT_MS))]);
       if (!ctrl.signal.aborted) setState({ phase: "done", result: body });

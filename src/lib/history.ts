@@ -12,8 +12,10 @@ import type { DescriptionResult, IdentificationResult } from "@/types";
 export const HISTORY_LIMIT = 50;
 
 const DB_NAME = "serpent-history";
-const DB_VERSION = 1;
+/** 2 adds the doctor cards store (src/lib/doctorCardStore.ts). */
+const DB_VERSION = 2;
 const ENTRIES = "entries";
+export const DOCTOR_CARDS = "doctorCards";
 const SETTINGS = "settings";
 const SAVE_ENABLED = "saveEnabled";
 /** Some browsers never answer an open request when storage is blocked; give up instead of waiting forever. */
@@ -57,6 +59,7 @@ function openDb(): Promise<IDBDatabase> {
       const db = req.result;
       if (!db.objectStoreNames.contains(ENTRIES)) db.createObjectStore(ENTRIES, { keyPath: "id" }).createIndex("savedAt", "savedAt");
       if (!db.objectStoreNames.contains(SETTINGS)) db.createObjectStore(SETTINGS);
+      if (!db.objectStoreNames.contains(DOCTOR_CARDS)) db.createObjectStore(DOCTOR_CARDS, { keyPath: "id" });
     };
     req.onsuccess = done(() => {
       const db = req.result;
@@ -77,7 +80,7 @@ function openDb(): Promise<IDBDatabase> {
 }
 
 /** Runs `body` in one transaction and resolves with what `body`'s returned reader gives once it commits. */
-async function transact<T>(stores: string[], mode: IDBTransactionMode, body: (tx: IDBTransaction) => () => T): Promise<T> {
+export async function transact<T>(stores: string[], mode: IDBTransactionMode, body: (tx: IDBTransaction) => () => T): Promise<T> {
   const db = await openDb();
   return new Promise<T>((resolve, reject) => {
     const tx = db.transaction(stores, mode);

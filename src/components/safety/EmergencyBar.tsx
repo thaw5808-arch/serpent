@@ -26,7 +26,7 @@ export function MobileEmergencyBar() {
   const contact = useEmergencyNumber();
   if (stripLocale(pathname ?? "/") === "/emergency") return null;
   return (
-    <div className="sticky bottom-0 z-30 border-t border-emergency bg-emergency md:hidden">
+    <div className="no-print sticky bottom-0 z-30 border-t border-emergency bg-emergency md:hidden">
       <Link
         href="/emergency"
         className="page flex min-h-15 items-center justify-between gap-4 text-emergency-ink"

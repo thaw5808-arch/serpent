@@ -14,6 +14,97 @@ How to review:
 
 Burmese text must be Myanmar Unicode, never Zawgyi.
 
+## High priority: read by doctors and hospital staff
+
+The "Show the doctor" card is shown to hospital staff during an emergency, often in a
+language the patient doesn't read. Review these first.
+
+| Key | th | my |
+| --- | --- | --- |
+| `doctorCard.pageTitle` | reviewed: no | reviewed: no |
+| `doctorCard.lead` | reviewed: no | reviewed: no |
+| `doctorCard.urgent` | reviewed: no | reviewed: no |
+| `doctorCard.cardLanguage` | reviewed: no | reviewed: no |
+| `doctorCard.cardLanguageHint` | reviewed: no | reviewed: no |
+| `doctorCard.modeLabel` | reviewed: no | reviewed: no |
+| `doctorCard.modeFill` | reviewed: no | reviewed: no |
+| `doctorCard.modeCard` | reviewed: no | reviewed: no |
+| `doctorCard.fillTitle` | reviewed: no | reviewed: no |
+| `doctorCard.biteTime` | reviewed: no | reviewed: no |
+| `doctorCard.required` | reviewed: no | reviewed: no |
+| `doctorCard.bittenNow` | reviewed: no | reviewed: no |
+| `doctorCard.pickTime` | reviewed: no | reviewed: no |
+| `doctorCard.ago` | reviewed: no | reviewed: no |
+| `doctorCard.agoMinutes` | reviewed: no | reviewed: no |
+| `doctorCard.futureTime` | reviewed: no | reviewed: no |
+| `doctorCard.noBiteTime` | reviewed: no | reviewed: no |
+| `doctorCard.location` | reviewed: no | reviewed: no |
+| `doctorCard.locations.hand` | reviewed: no | reviewed: no |
+| `doctorCard.locations.arm` | reviewed: no | reviewed: no |
+| `doctorCard.locations.foot` | reviewed: no | reviewed: no |
+| `doctorCard.locations.leg` | reviewed: no | reviewed: no |
+| `doctorCard.locations.torso` | reviewed: no | reviewed: no |
+| `doctorCard.locations.head_neck` | reviewed: no | reviewed: no |
+| `doctorCard.locations.other` | reviewed: no | reviewed: no |
+| `doctorCard.symptoms` | reviewed: no | reviewed: no |
+| `doctorCard.symptomsHint` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.none` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.pain_swelling` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.bleeding` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.eyelids_vision` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.swallow_speak` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.breathing` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.nausea` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.dizzy` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.numbness` | reviewed: no | reviewed: no |
+| `doctorCard.symptomItems.urine` | reviewed: no | reviewed: no |
+| `doctorCard.since` | reviewed: no | reviewed: no |
+| `doctorCard.firstAid` | reviewed: no | reviewed: no |
+| `doctorCard.firstAidItems.still` | reviewed: no | reviewed: no |
+| `doctorCard.firstAidItems.rings` | reviewed: no | reviewed: no |
+| `doctorCard.firstAidItems.tourniquet` | reviewed: no | reviewed: no |
+| `doctorCard.firstAidItems.cut_suck` | reviewed: no | reviewed: no |
+| `doctorCard.firstAidItems.herbal` | reviewed: no | reviewed: no |
+| `doctorCard.tellDoctor` | reviewed: no | reviewed: no |
+| `doctorCard.patient` | reviewed: no | reviewed: no |
+| `doctorCard.patientName` | reviewed: no | reviewed: no |
+| `doctorCard.allergies` | reviewed: no | reviewed: no |
+| `doctorCard.notes` | reviewed: no | reviewed: no |
+| `doctorCard.cardTitle` | reviewed: no | reviewed: no |
+| `doctorCard.madeOn` | reviewed: no | reviewed: no |
+| `doctorCard.snake` | reviewed: no | reviewed: no |
+| `doctorCard.notIdentified` | reviewed: no | reviewed: no |
+| `doctorCard.possibleMatches` | reviewed: no | reviewed: no |
+| `doctorCard.status` | reviewed: no | reviewed: no |
+| `doctorCard.fromPhoto` | reviewed: no | reviewed: no |
+| `doctorCard.fromDescription` | reviewed: no | reviewed: no |
+| `doctorCard.venomType` | reviewed: no | reviewed: no |
+| `doctorCard.risk` | reviewed: no | reviewed: no |
+| `doctorCard.riskSpecies` | reviewed: no | reviewed: no |
+| `doctorCard.riskWorst` | reviewed: no | reviewed: no |
+| `doctorCard.photoAlt` | reviewed: no | reviewed: no |
+| `doctorCard.bitten` | reviewed: no | reviewed: no |
+| `doctorCard.biteLocation` | reviewed: no | reviewed: no |
+| `doctorCard.noneReported` | reviewed: no | reviewed: no |
+| `doctorCard.notGiven` | reviewed: no | reviewed: no |
+| `doctorCard.patientSection` | reviewed: no | reviewed: no |
+| `doctorCard.footer` | reviewed: no | reviewed: no |
+| `doctorCard.savePdf` | reviewed: no | reviewed: no |
+| `doctorCard.deleteCard` | reviewed: no | reviewed: no |
+| `doctorCard.deleteConfirm` | reviewed: no | reviewed: no |
+| `doctorCard.deleteConfirmButton` | reviewed: no | reviewed: no |
+| `doctorCard.deleted` | reviewed: no | reviewed: no |
+| `doctorCard.newCard` | reviewed: no | reviewed: no |
+| `doctorCard.savedHere` | reviewed: no | reviewed: no |
+| `doctorCard.saveOff` | reviewed: no | reviewed: no |
+| `doctorCard.storageUnavailable` | reviewed: no | reviewed: no |
+| `doctorCard.entry` | reviewed: no | reviewed: no |
+| `doctorCard.entryBitten` | reviewed: no | reviewed: no |
+| `doctorCard.emergencyEntryLead` | reviewed: no | reviewed: no |
+| `doctorCard.loading` | reviewed: no | reviewed: no |
+
+## All other safety-critical text
+
 | Key | th | my |
 | --- | --- | --- |
 | `common.bitten` | reviewed: no | reviewed: no |

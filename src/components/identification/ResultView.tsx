@@ -6,6 +6,7 @@ import { EmergencyCallBar } from "@/components/safety/EmergencyBar";
 import { VenomStatusBadge, VenomTypeChip } from "@/components/ui/StatusBadge";
 import { ButtonLink } from "@/components/ui/Button";
 import { NotTranslated } from "@/components/ui/NotTranslated";
+import { DoctorCardLink } from "@/components/doctorCard/DoctorCardLink";
 import { ReportWrongResult } from "./ReportWrongResult";
 import { VenomPanel } from "@/components/venom/VenomPanel";
 import { getCountry } from "@/data/countries";
@@ -75,7 +76,7 @@ export function ResultView({ result, thumbnails }: { result: IdentificationResul
 
             {others.length > 0 && <Alternatives items={others} />}
 
-            <Actions>
+            <Actions resultId={result.id}>
               <ButtonLink href="/identify" variant="secondary">{t.result.identifyAnother}</ButtonLink>
               <ButtonLink href={`/species/${species.id}`} variant="secondary">
                 {fmt(t.result.fullProfile, { name: species.commonName })} <ArrowUpRight aria-hidden className="size-4 shrink-0" />
@@ -113,11 +114,12 @@ function ResultLayout({ left, right }: { left: ReactNode; right: ReactNode }) {
   );
 }
 
-/** Emergency first, then the secondary actions. */
-function Actions({ children }: { children: ReactNode }) {
+/** Emergency first, then the doctor card, then the secondary actions. */
+function Actions({ resultId, children }: { resultId: string; children: ReactNode }) {
   return (
     <div className="space-y-3">
       <EmergencyCallBar />
+      <DoctorCardLink resultId={resultId} />
       <div className="grid gap-3 sm:grid-cols-2">{children}</div>
     </div>
   );
@@ -523,7 +525,7 @@ function ClosestMatchResult({
 
           {others.length > 0 && <Alternatives items={others} heading={t.result.otherPossibilitiesLow} />}
 
-          <Actions>
+          <Actions resultId={result.id}>
             <ButtonLink href="/identify" variant="secondary">{t.result.identifyAnother}</ButtonLink>
             {href && (
               <ButtonLink href={href} variant="secondary">
@@ -587,7 +589,7 @@ function NoIdentification({
         <>
           {result.alternatives.length > 0 && <Alternatives items={result.alternatives} heading={t.result.mayResemble} />}
 
-          <Actions>
+          <Actions resultId={result.id}>
             {canRetake && <ButtonLink href="/identify">{t.result.tryAnotherPhoto}</ButtonLink>}
             {result.status === "insufficient_image" && (
               <ButtonLink href="/identify/describe" variant="secondary">

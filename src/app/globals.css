@@ -623,6 +623,174 @@ button.underline:hover {
   .opt-not-sure {
     border-style: dashed;
   }
+  /* "Show the doctor" card: at least 18px everywhere, high contrast, in the card's own language. */
+  .doctor-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 20px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+  .doctor-card:lang(th) {
+    font-family: "Schibsted Grotesk Variable", "Noto Sans Thai Variable", ui-sans-serif, system-ui, sans-serif;
+  }
+  /*
+    Line heights follow the card's language, not the page's: a Thai card on a Burmese
+    page must not take Burmese spacing (that alone pushed a printed card onto 2 pages).
+    These beat the page-wide :lang rules below on specificity.
+  */
+  .doctor-card:lang(en),
+  .doctor-card:lang(en) * {
+    line-height: 1.45 !important;
+  }
+  .doctor-card:lang(th),
+  .doctor-card:lang(th) * {
+    line-height: 1.6 !important;
+  }
+  .doctor-card:lang(my),
+  .doctor-card:lang(my) * {
+    line-height: 1.8 !important;
+  }
+  .doctor-card:lang(my) {
+    font-family: "Schibsted Grotesk Variable", "Noto Sans Myanmar Variable", ui-sans-serif, system-ui, sans-serif;
+  }
+  .dc-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .dc-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .dc-date,
+  .dc-sub,
+  .dc-ago,
+  .dc-label {
+    font-size: 1.125rem;
+    color: var(--ink-2);
+  }
+  .dc-list > .dc-row {
+    display: grid;
+    gap: 2px 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 640px) {
+    .dc-list > .dc-row {
+      grid-template-columns: 11rem minmax(0, 1fr);
+    }
+  }
+  .dc-label {
+    font-weight: 600;
+  }
+  .dc-status {
+    font-weight: 700;
+  }
+  .dc-status-danger {
+    color: var(--critical);
+  }
+  .dc-missing {
+    font-weight: 600;
+    color: var(--caution);
+  }
+  .dc-flag {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 0 8px;
+    border: 1px solid var(--caution-border);
+    border-radius: 6px;
+    background: var(--caution-bg);
+    color: var(--caution);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  .opt-card .dc-flag {
+    display: block;
+    width: fit-content;
+    margin: 4px 0 0;
+    font-size: 0.875rem;
+  }
+  .dc-photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .dc-photos img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+  }
+  .dc-footer {
+    margin-top: 14px;
+    font-size: 1.125rem;
+    color: var(--ink-2);
+  }
+  /* Card language and Fill in / Show card: segmented, with real radios and toggle buttons. */
+  .dc-lang,
+  .dc-mode {
+    display: inline-flex;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+  .dc-lang label,
+  .dc-mode button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 7px;
+    font-weight: 600;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .dc-lang input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+  }
+  .dc-lang label:has(input:checked),
+  .dc-mode button[aria-pressed="true"] {
+    background: var(--gold);
+    color: var(--gold-ink);
+  }
+  .dc-lang label:has(input:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  /* "Bitten? Make a doctor card": red outline, beside the emergency call. */
+  .btn-doctor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 52px;
+    padding: 0 20px;
+    border: 2px solid var(--critical);
+    border-radius: var(--radius-card);
+    font-weight: 600;
+    color: var(--ink);
+    transition: background-color 150ms ease;
+  }
+  .btn-doctor:hover {
+    background: var(--critical-bg);
+  }
+
   /* "Snake season": 12 month columns, all snakes in gold with dangerous snakes as an inner bar. */
   .season-chart {
     display: grid;
@@ -1052,4 +1220,103 @@ details[open] > summary .chevron { transform: rotate(180deg); }
 }
 .indeterminate {
   animation: scan 1.4s ease-in-out infinite;
+}
+
+/*
+  Printing ("Save as PDF" on the doctor card): white paper, black text, only the
+  card. Site navigation, header, footer and anything marked .no-print are left out.
+*/
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  :root {
+    --paper: #fff;
+    --surface: #fff;
+    --surface-2: #fff;
+    --ink: #000;
+    --ink-2: #222;
+    --line: #777;
+    --critical: #000;
+    --caution: #000;
+    --caution-bg: #fff;
+    --caution-border: #000;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  header,
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  /* Only the card on the page: no wrapper spacing above or around it. */
+  .dc-page,
+  .dc-grid,
+  .dc-column {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .doctor-card {
+    border: 1.5px solid #000;
+    padding: 5mm 6mm;
+    font-size: 10.5pt;
+    break-inside: avoid;
+  }
+  /* Tighter than on screen so a full card (every symptom, photos, notes) fits one page in any language. */
+  .doctor-card:lang(en),
+  .doctor-card:lang(en) * {
+    line-height: 1.3 !important;
+  }
+  .doctor-card:lang(th),
+  .doctor-card:lang(th) * {
+    line-height: 1.4 !important;
+  }
+  .doctor-card:lang(my),
+  .doctor-card:lang(my) * {
+    line-height: 1.55 !important;
+  }
+  .dc-head {
+    padding-bottom: 2mm;
+  }
+  .dc-title {
+    font-size: 15pt;
+  }
+  .dc-date,
+  .dc-sub,
+  .dc-ago,
+  .dc-label,
+  .dc-flag,
+  .dc-footer {
+    font-size: 10pt;
+  }
+  .dc-list > .dc-row {
+    grid-template-columns: 34mm minmax(0, 1fr);
+    padding: 1.2mm 0;
+  }
+  .dc-cols {
+    columns: 2;
+    column-gap: 6mm;
+  }
+  .dc-cols li {
+    break-inside: avoid;
+  }
+  .dc-photos {
+    margin-top: 1.5mm;
+  }
+  .dc-photos img {
+    width: 18mm;
+    height: 18mm;
+  }
+  .dc-flag {
+    border-color: #000;
+    padding: 0 4px;
+  }
+  .dc-footer {
+    margin-top: 3mm;
+  }
 }

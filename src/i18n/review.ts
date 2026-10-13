@@ -42,7 +42,14 @@ export const SAFETY_CRITICAL_PREFIXES = [
   "describe.",
   // "Snake season": must never read as "safe this month".
   "season.",
+  // Read by doctors and hospital staff: also high priority (HIGH_PRIORITY_PREFIXES).
+  "doctorCard.",
 ] as const;
+
+/** Safety-critical keys that hospital staff read: REVIEW.md lists them first, to be reviewed first. */
+export const HIGH_PRIORITY_PREFIXES = ["doctorCard."] as const;
+
+export const isHighPriority = (key: string) => HIGH_PRIORITY_PREFIXES.some((p) => key.startsWith(p));
 
 /** Every leaf key of a messages object, dotted. */
 export function flattenKeys(obj: unknown, prefix = ""): string[] {
