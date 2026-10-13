@@ -1,40 +1,71 @@
-import { Siren } from "lucide-react";
-import { Link } from "@/i18n/client";
-import { getDictionary } from "@/i18n/server";
+"use client";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { Phone } from "lucide-react";
+import { Link, useT } from "@/i18n/client";
+import { stripLocale } from "@/i18n/config";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { MobileMenu } from "./MobileMenu";
 
-export async function SiteHeader() {
-  const t = await getDictionary();
+/** The page a path belongs to: nested routes (/species/[slug]) light up their section; a result belongs to Identify. */
+function section(path: string): string | null {
+  if (path === "/result") return "/identify";
+  const first = path.split("/")[1];
+  return first ? `/${first}` : null;
+}
+
+/** "Segmented control" header: logo, the four pages in a rounded track, language and the emergency button. */
+export function SiteHeader() {
+  const t = useT();
+  const current = section(stripLocale(usePathname() ?? "/"));
+  const links = [
+    { href: "/identify", label: t.common.navIdentify },
+    { href: "/species", label: t.common.navSpecies },
+    { href: "/near-me", label: t.common.navNearMe },
+    { href: "/history", label: t.common.navHistory },
+  ];
+
+  // The bottom border appears only once the page has scrolled.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper">
-      <div className="page flex h-16 items-center gap-8">
+    <header className="site-header sticky top-0 z-40 bg-paper" data-scrolled={scrolled || undefined}>
+      <div className="page flex flex-wrap items-center gap-x-3 pb-2 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-4 lg:gap-x-6 md:pb-0">
         <Link
           href="/"
-          className="type-name inline-flex min-h-11 items-center text-[1.5rem] tracking-[-0.025em]"
+          className="type-name mr-auto inline-flex h-14 items-center justify-self-start text-[23px] md:h-16"
           aria-label={t.common.homeAria}
         >
           Serpent
         </Link>
-        <nav aria-label={t.common.mainNav} className="hidden items-center gap-6 text-small font-medium text-ink-2 md:flex">
-          <Link href="/identify" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navIdentify}</Link>
-          <Link href="/species" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navSpecies}</Link>
-          <Link href="/near-me" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navNearMe}</Link>
-          <Link href="/history" className="inline-flex min-h-11 items-center hover:text-ink">{t.common.navHistory}</Link>
+        <nav aria-label={t.common.mainNav} className="order-last w-full md:order-none md:w-auto">
+          <ul className="seg-track">
+            {links.map((l) => (
+              <li key={l.href} className="flex">
+                <Link
+                  href={l.href}
+                  aria-current={current === l.href ? "page" : undefined}
+                  className="seg-link"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
-        <LanguageSwitcher className="ml-auto hidden md:block" />
-        <Link
-          href="/emergency"
-          className="hidden min-h-11 items-center gap-2 rounded-full bg-emergency px-5 text-small font-semibold text-emergency-ink hover:opacity-90 md:inline-flex"
-        >
-          <Siren aria-hidden className="size-4" />
-          {t.common.bitten}
-        </Link>
-        <div className="ml-auto flex items-center gap-1 md:hidden">
-          <Link href="/species" className="inline-flex min-h-11 items-center px-3 text-small font-medium text-ink-2 hover:text-ink">
-            {t.common.navSpecies}
+        <div className="flex items-center gap-2 justify-self-end md:gap-3">
+          <LanguageSwitcher />
+          <Link href="/emergency" className="bitten-btn">
+            <Phone aria-hidden className="size-4 shrink-0" />
+            {/* The full label needs the room of a laptop-width row; tablets keep the short one. */}
+            <span className="lg:hidden">{t.common.bittenShort}</span>
+            <span className="hidden lg:inline">{t.common.bitten}</span>
           </Link>
-          <MobileMenu />
         </div>
       </div>
     </header>

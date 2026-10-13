@@ -17,6 +17,7 @@ Burmese text must be Myanmar Unicode, never Zawgyi.
 | Key | th | my |
 | --- | --- | --- |
 | `common.bitten` | reviewed: no | reviewed: no |
+| `common.bittenShort` | reviewed: no | reviewed: no |
 | `footer.disclaimer` | reviewed: no | reviewed: no |
 | `home.neverApproach` | reviewed: no | reviewed: no |
 | `identify.lead` | reviewed: no | reviewed: no |

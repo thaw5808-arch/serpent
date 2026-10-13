@@ -35,6 +35,11 @@
   --venom-fill: #a3241a;
   --emergency: #6e1010;
   --emergency-ink: #ffffff;
+  --emergency-hover: #861515;
+
+  /* Header segmented control: the track and the current page's segment. */
+  --track: #e1e7e1;
+  --segment: #ffffff;
 
   --focus: #1f5fbf;
   --gutter: 20px;
@@ -85,6 +90,10 @@ html:lang(my) {
     --venom-fill: #a3241a;
     --emergency: #7a1414;
     --emergency-ink: #ffffff;
+    --emergency-hover: #8c1a1a;
+
+    --track: #18201c;
+    --segment: #26312b;
 
     --focus: #8ab4ff;
   }
@@ -382,6 +391,143 @@ body {
     }
   }
 
+  /* Site header ("segmented control"). The border shows only once the page has scrolled. */
+  .site-header {
+    border-bottom: 1px solid transparent;
+  }
+  .site-header[data-scrolled] {
+    border-bottom-color: var(--line);
+  }
+  /* Mobile: a full-width row of four equal columns; scrolls sideways rather than squeezing long labels. */
+  .seg-track {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(max-content, 1fr));
+    gap: 2px;
+    padding: 4px;
+    border-radius: 14px;
+    background: var(--track);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .seg-link {
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    white-space: nowrap;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  }
+  .seg-link:hover {
+    color: var(--ink);
+  }
+  .seg-link[aria-current="page"] {
+    background: var(--segment);
+    border-color: var(--line);
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (min-width: 768px) {
+    .seg-track {
+      display: flex;
+      overflow: visible;
+    }
+    .seg-link {
+      min-height: 40px;
+      padding: 0 18px;
+      font-size: 0.9375rem;
+    }
+  }
+
+  /* Compact language button: "EN ▾". */
+  .lang-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 44px;
+    padding: 0 10px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 150ms ease;
+  }
+  .lang-trigger:hover,
+  .lang-trigger[data-open] {
+    border-color: var(--ink);
+  }
+  .lang-chevron {
+    display: none;
+    width: 16px;
+    height: 16px;
+    color: var(--ink-2);
+    transition: transform 200ms ease;
+  }
+  .lang-trigger[data-open] .lang-chevron {
+    transform: rotate(180deg);
+  }
+  .fd-panel.lang-panel {
+    left: auto;
+    right: 0;
+    min-width: 180px;
+  }
+  @media (min-width: 768px) {
+    .lang-trigger {
+      height: 40px;
+      padding: 0 12px;
+    }
+    .lang-chevron {
+      display: block;
+    }
+  }
+
+  /* "I've been bitten" / "Bitten?" */
+  .bitten-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+    background: var(--emergency);
+    color: var(--emergency-ink);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 150ms ease;
+  }
+  .bitten-btn:hover {
+    background: var(--emergency-hover);
+  }
+  @media (min-width: 768px) {
+    .bitten-btn {
+      padding: 0 18px;
+      font-size: 0.9375rem;
+    }
+  }
+  /* Tablets: the row must fit Burmese labels at 768px, so tighten until laptop widths. */
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    .seg-link { padding: 0 12px; }
+    .lang-chevron { display: none; }
+    .bitten-btn { padding: 0 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .seg-link,
+    .lang-trigger,
+    .lang-chevron,
+    .bitten-btn {
+      transition: none !important;
+    }
+  }
+
   /* Small uppercase-free label above a value or block. */
   .eyebrow {
     font-size: 0.8125rem;
@@ -430,9 +576,14 @@ html:lang(my) .fd-option {
   overflow-wrap: anywhere;
 }
 
-/* Keep the dropdown trigger's own radius under the global focus ring. */
-.fd-trigger:focus-visible {
+/* Keep each control's own radius under the global focus ring. */
+.fd-trigger:focus-visible,
+.seg-link:focus-visible,
+.lang-trigger:focus-visible {
   border-radius: 10px;
+}
+.bitten-btn:focus-visible {
+  border-radius: 12px;
 }
 
 /* Binomial nomenclature is italic by convention. */
