@@ -55,7 +55,7 @@ export const SINCE_YEAR = 1990;
 const BASIS_OF_RECORD = ["HUMAN_OBSERVATION", "PRESERVED_SPECIMEN", "MACHINE_OBSERVATION"] as const;
 const OPEN_LICENSES = ["CC0_1_0", "CC_BY_4_0"] as const;
 
-const API = "https://api.gbif.org/v1/occurrence/search";
+export const API = "https://api.gbif.org/v1/occurrence/search";
 /** GBIF asks API clients to identify themselves. */
 export const USER_AGENT = "Serpent/0.1 (snake safety app; https://github.com/thaw5808-arch/serpent)";
 /** A normal GBIF answer takes about 2 s; give up on one request well before the route's own limit. */
@@ -109,6 +109,14 @@ export const includeNonCommercial = () => process.env.GBIF_INCLUDE_NC === "true"
 
 /** The shared filters, as repeated query parameters. */
 function filters(center: LatLng, includesNonCommercial: boolean): [string, string][] {
+  return [...placeFilters(center, includesNonCommercial), ...snakeTaxonFilter()];
+}
+
+/**
+ * Everything but the taxon filter: area, years, record types and licences. Callers add
+ * taxonKey params (repeated taxonKeys are OR'ed by GBIF).
+ */
+export function placeFilters(center: LatLng, includesNonCommercial: boolean): [string, string][] {
   return [
     ["geoDistance", `${center.lat},${center.lng},${RADIUS_KM}km`],
     ["hasCoordinate", "true"],
@@ -117,17 +125,18 @@ function filters(center: LatLng, includesNonCommercial: boolean): [string, strin
     ...BASIS_OF_RECORD.map((b): [string, string] => ["basisOfRecord", b]),
     ["year", `${SINCE_YEAR},*`],
     ...(includesNonCommercial ? [] : OPEN_LICENSES.map((l): [string, string] => ["license", l])),
-    ...Object.values(SNAKE_FAMILY_KEYS).map((k): [string, string] => ["taxonKey", String(k)]),
   ];
 }
 
-const query = (params: [string, string][]) => new URLSearchParams(params).toString();
+export const snakeTaxonFilter = (): [string, string][] => Object.values(SNAKE_FAMILY_KEYS).map((k): [string, string] => ["taxonKey", String(k)]);
 
-interface FacetCount {
+export const query = (params: [string, string][]) => new URLSearchParams(params).toString();
+
+export interface FacetCount {
   name: string;
   count: number;
 }
-interface SearchResponse {
+export interface SearchResponse {
   count: number;
   results: { species?: string; genus?: string; family?: string }[];
   facets?: { field: string; counts: FacetCount[] }[];
@@ -139,7 +148,7 @@ function waitFor(res: Response, attempt: number): number {
   return Math.min(Number.isFinite(header) && header > 0 ? header * 1000 : 1000 * 2 ** attempt, MAX_WAIT_MS);
 }
 
-async function search(fetchImpl: FetchLike, params: [string, string][], wait: Sleep = sleep): Promise<SearchResponse> {
+export async function search(fetchImpl: FetchLike, params: [string, string][], wait: Sleep = sleep): Promise<SearchResponse> {
   let res: Response;
   for (let attempt = 0; ; attempt++) {
     try {

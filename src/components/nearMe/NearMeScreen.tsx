@@ -11,6 +11,7 @@ import { venomBasisText } from "@/i18n/result";
 import type { Place } from "@/services/nearMe/geocoder";
 import type { Sightings } from "@/services/nearMe";
 import type { NearbySnake } from "@/services/nearMe/classify";
+import { SeasonSection } from "@/components/season/SeasonSection";
 import { CityPicker } from "./CityPicker";
 import { usePlace } from "./usePlace";
 
@@ -92,6 +93,8 @@ export function NearMeScreen() {
           {t.nearMe.change}
         </button>
       </p>
+
+      <SeasonSection place={place} />
 
       <div className="mt-8" aria-busy={!current}>
         {!current && (

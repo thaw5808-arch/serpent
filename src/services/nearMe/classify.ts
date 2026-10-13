@@ -33,6 +33,8 @@ export interface NearbySnake {
   href: string | null;
   records: number;
   lastYear: number | null;
+  /** GBIF species keys behind this row (several when GBIF names are synonyms of one species). */
+  gbifKeys: number[];
 }
 
 /**
@@ -42,7 +44,7 @@ export interface NearbySnake {
 const RISK_ORDER: Record<MedicalRisk, number> = { very_high: 0, high: 1, unknown: 2, moderate: 3, low: 4 };
 
 export function classifySpecies(g: GbifSpecies): NearbySnake {
-  const counts = { records: g.records, lastYear: g.lastYear };
+  const counts = { records: g.records, lastYear: g.lastYear, gbifKeys: [g.speciesKey] };
   const taxon = resolveTaxon({ scientificName: g.name, genus: g.genus, family: g.family });
 
   if (taxon.kind === "species") {
@@ -121,9 +123,10 @@ function merge(rows: NearbySnake[]): NearbySnake[] {
   const byId = new Map<string, NearbySnake>();
   for (const r of rows) {
     const seen = byId.get(r.id);
-    if (!seen) byId.set(r.id, { ...r });
+    if (!seen) byId.set(r.id, { ...r, gbifKeys: [...r.gbifKeys] });
     else {
       seen.records += r.records;
+      seen.gbifKeys.push(...r.gbifKeys);
       seen.lastYear = Math.max(seen.lastYear ?? 0, r.lastYear ?? 0) || null;
     }
   }

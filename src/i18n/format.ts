@@ -76,3 +76,16 @@ export function countryName(code: string | null | undefined, locale: Locale): st
     return english;
   }
 }
+
+/** Burmese month names, for browsers without Burmese locale data (the same names Intl gives where it has them). */
+const MY_MONTHS = {
+  long: ["ဇန်နဝါရီ", "ဖေဖော်ဝါရီ", "မတ်", "ဧပြီ", "မေ", "ဇွန်", "ဇူလိုင်", "ဩဂုတ်", "စက်တင်ဘာ", "အောက်တိုဘာ", "နိုဝင်ဘာ", "ဒီဇင်ဘာ"],
+  short: ["ဇန်", "ဖေ", "မတ်", "ဧ", "မေ", "ဇွန်", "ဇူ", "ဩ", "စက်", "အောက်", "နို", "ဒီ"],
+  narrow: ["ဇ", "ဖ", "မ", "ဧ", "မ", "ဇ", "ဇ", "ဩ", "စ", "အ", "န", "ဒ"],
+};
+
+/** A month's name (1 = January) in the interface language, from Intl.DateTimeFormat. */
+export function monthName(month: number, locale: Locale, style: "long" | "short" | "narrow" = "long"): string {
+  if (locale === "my" && !hasData(Intl.DateTimeFormat, locale)) return MY_MONTHS[style][month - 1] ?? String(month);
+  return new Intl.DateTimeFormat(INTL[locale], { month: style, timeZone: "UTC" }).format(Date.UTC(2024, month - 1, 15));
+}

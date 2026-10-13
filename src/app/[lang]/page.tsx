@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AlertTriangle, Camera } from "lucide-react";
 import { NocturneHero } from "@/components/landing/NocturneHero";
+import { HomeSeasonCard } from "@/components/season/HomeSeasonCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { VenomStatusBadge } from "@/components/ui/StatusBadge";
 import { RiskMeter } from "@/components/venom/RiskMeter";
@@ -23,6 +24,7 @@ export default async function Home() {
   return (
     <>
       <NocturneHero />
+      <HomeSeasonCard />
       <section className="page grid gap-10 pb-16 pt-10 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-24 lg:pt-20">
         <div className="lg:col-span-7 lg:pr-8">
           <h2 className="type-display">{t.home.title}</h2>

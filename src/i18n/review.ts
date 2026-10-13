@@ -40,6 +40,8 @@ export const SAFETY_CRITICAL_PREFIXES = [
   "landing.",
   // "Describe a snake": the questions decide what is matched, and the result says how to treat the snake.
   "describe.",
+  // "Snake season": must never read as "safe this month".
+  "season.",
 ] as const;
 
 /** Every leaf key of a messages object, dotted. */

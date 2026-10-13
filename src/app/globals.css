@@ -48,6 +48,8 @@
   --segment: rgba(238, 241, 236, .10);
 
   --focus: #d9c77e;
+  /* Snake season chart: dangerous snakes' inner bar. */
+  --season-danger: #f2867a;
   --gutter: 20px;
 
   /* Font stacks. Thai and Burmese pages add their Noto faces after the Latin ones,
@@ -621,6 +623,80 @@ button.underline:hover {
   .opt-not-sure {
     border-style: dashed;
   }
+  /* "Snake season": 12 month columns, all snakes in gold with dangerous snakes as an inner bar. */
+  .season-chart {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .season-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+  }
+  .season-now-label {
+    height: 18px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .season-track {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 140px;
+    border-radius: 4px;
+    padding: 3px;
+  }
+  .season-col[data-now] .season-track {
+    outline: 1.5px solid var(--ink);
+    outline-offset: 0;
+  }
+  .season-bar {
+    width: 100%;
+    max-width: 36px;
+    border-radius: 3px 3px 0 0;
+    background: var(--gold);
+  }
+  .season-danger {
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    width: 40%;
+    max-width: 14px;
+    transform: translateX(-50%);
+    border-radius: 2px 2px 0 0;
+    background: var(--season-danger);
+  }
+  .season-month {
+    margin-top: 6px;
+    font-size: 0.6875rem;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .season-col[data-now] .season-month {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .season-peak,
+  .season-peak-key {
+    height: 14px;
+    font-size: 0.625rem;
+    color: var(--gold);
+  }
+  .season-key {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+  }
+  .season-key-all { background: var(--gold); }
+  .season-key-danger { background: var(--season-danger); }
+
   /* Colour answers: a swatch beside the name (decorative; the name carries the meaning). */
   .swatch {
     display: block;

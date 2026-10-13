@@ -207,7 +207,7 @@ describe("describe: candidate pool", () => {
   it("uses snakes recorded near the place, plus the reviewed catalog", async () => {
     const sightings: SightingsLookup = async () => ({
       dangerous: [],
-      other: [{ id: "x", kind: "taxonomy", commonName: "Some Snake", scientificName: "Lycodon subcinctus", venomStatus: null, venomBasis: "not_assessed", venomGroup: null, medicalRisk: null, dangerous: false, href: null, records: 3, lastYear: 2020 }],
+      other: [{ id: "x", kind: "taxonomy", commonName: "Some Snake", scientificName: "Lycodon subcinctus", venomStatus: null, venomBasis: "not_assessed", venomGroup: null, medicalRisk: null, dangerous: false, href: null, records: 3, lastYear: 2020, gbifKeys: [1] }],
     });
     const pool = await buildPool(BANGKOK, sightings);
     expect(pool.kind).toBe("nearby");
