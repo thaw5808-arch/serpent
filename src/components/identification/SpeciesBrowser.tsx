@@ -62,7 +62,7 @@ export function SpeciesBrowser({ species }: { species: SpeciesRecord[] }) {
             placeholder={t.speciesList.searchPlaceholder}
             value={f.query}
             onChange={(e) => set({ query: e.target.value })}
-            className="min-h-14 w-full rounded-[10px] border border-line bg-[var(--field)] pl-10 pr-3 text-body hover:border-ink"
+            className="min-h-14 w-full rounded-[10px] border border-line bg-field pl-10 pr-3 text-body text-ink placeholder:text-[var(--muted)] hover:border-ink-2 focus:border-gold-light"
           />
         </div>
         <FilterDropdown label={t.speciesList.region} options={regionOptions} value={f.region ?? ""} onChange={(region) => set({ region })} />
@@ -74,7 +74,7 @@ export function SpeciesBrowser({ species }: { species: SpeciesRecord[] }) {
               type="checkbox"
               checked={f.highRiskOnly}
               onChange={(e) => set({ highRiskOnly: e.target.checked })}
-              className="size-5 accent-[var(--moss)]"
+              className="size-5 accent-[var(--gold)]"
             />
             {t.speciesList.highRiskOnly}
           </label>
@@ -98,7 +98,7 @@ export function SpeciesBrowser({ species }: { species: SpeciesRecord[] }) {
           <button
             type="button"
             onClick={() => setF({ query: "", region: "", venomStatus: "", venomType: "", highRiskOnly: false })}
-            className="mt-3 min-h-11 rounded-card px-4 text-moss underline underline-offset-2"
+            className="mt-3 min-h-11 rounded-card px-4 text-ink underline underline-offset-2"
           >
             {t.speciesList.clearFilters}
           </button>
@@ -111,7 +111,7 @@ export function SpeciesBrowser({ species }: { species: SpeciesRecord[] }) {
               <li key={s.id}>
                 <Link
                   href={`/species/${s.id}`}
-                  className="grid gap-2 py-4 hover:bg-surface sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-3"
+                  className="grid gap-2 py-4 hover:bg-row-hover sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-3"
                 >
                   <span>
                     <span className="type-name block">{s.commonName}</span>
@@ -136,7 +136,7 @@ export function SpeciesBrowser({ species }: { species: SpeciesRecord[] }) {
           <ul className="mt-3 divide-y divide-line border-y border-line">
             {others.map((h) => (
               <li key={h.slug}>
-                <Link href={`/species/${h.slug}`} className="flex min-h-14 flex-wrap items-baseline justify-between gap-2 py-3 hover:bg-surface sm:px-3">
+                <Link href={`/species/${h.slug}`} className="flex min-h-14 flex-wrap items-baseline justify-between gap-2 py-3 hover:bg-row-hover sm:px-3">
                   <span>
                     <span className="type-name text-[1.125rem]">{h.commonName ?? h.name}</span>
                     {h.commonName && <span className="binomial ml-2 text-small text-ink-2">{h.name}</span>}

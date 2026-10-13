@@ -72,7 +72,7 @@ export default async function Home() {
                 key={k}
                 className="grid grid-cols-[2rem_1fr] gap-x-3 border-b border-line py-5 lg:block lg:border-b-0 lg:border-t lg:py-0 lg:pt-5"
               >
-                <span className="font-serif text-[1.5rem] leading-none text-moss tabular-nums">{i + 1}</span>
+                <span className="font-serif text-[1.5rem] leading-none text-gold tabular-nums">{i + 1}</span>
                 <div className="lg:mt-4">
                   <h3 className="type-h3">{t.home.steps[k].title}</h3>
                   <p className="mt-1 text-small text-ink-2">{t.home.steps[k].body}</p>

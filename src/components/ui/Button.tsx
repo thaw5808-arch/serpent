@@ -5,21 +5,17 @@ type Variant = "primary" | "secondary" | "danger" | "ghost";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-card px-5 text-body font-semibold disabled:cursor-not-allowed disabled:opacity-50";
+/** Primary is the landing hero's gold CTA and secondary its outline button (.btn-primary / .btn-secondary in globals.css). */
 const variants: Record<Variant, string> = {
-  primary: "min-h-15 bg-moss text-moss-ink",
-  secondary: "min-h-13 border border-ink bg-transparent text-ink hover:bg-surface-2",
-  danger: "min-h-15 bg-emergency text-emergency-ink hover:opacity-90",
-  ghost: "min-h-11 font-medium text-ink-2 hover:text-ink hover:bg-surface-2",
+  primary: "min-h-15 btn-primary",
+  secondary: "min-h-13 btn-secondary",
+  danger: "min-h-15 bg-emergency text-emergency-ink transition-colors hover:bg-emergency-hover",
+  ghost: "min-h-11 font-medium text-ink-2 transition-colors hover:text-ink hover:bg-surface-2",
 };
 
-// .btn-viewfinder supplies its own transitions (globals.css), so it skips the
-// utilities that would override them and darkens on hover instead of fading.
-const hover = "transition-colors";
-const primaryHover = "hover:opacity-90";
-
+// .btn-primary, .btn-secondary and .btn-viewfinder bring their own transitions (globals.css).
 export function buttonClass(variant: Variant = "primary", extra = "", viewfinder = false) {
-  if (viewfinder) return `${base} ${variants[variant]} hover:bg-moss-hover btn-viewfinder ${extra}`;
-  return `${base} ${hover} ${variants[variant]} ${variant === "primary" ? primaryHover : ""} ${extra}`;
+  return `${base} ${variants[variant]} ${viewfinder ? "btn-viewfinder" : ""} ${extra}`;
 }
 
 /** Decorative corner brackets and scan line for primary camera CTAs. */

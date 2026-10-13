@@ -13,10 +13,10 @@ const ICON = {
 
 /** Venomous is the one filled badge; the rest are tinted. Icon + text always carry the meaning. */
 const STYLE: Record<DisplayVenomStatus, string> = {
-  venomous: "border-venom bg-venom text-white",
-  potentially_venomous: "border-caution/30 bg-caution-bg text-caution",
-  mildly_venomous: "border-low/25 bg-low-bg text-low",
-  non_venomous: "border-low/25 bg-low-bg text-low",
+  venomous: "border-venom bg-venom text-emergency-ink",
+  potentially_venomous: "border-caution-border bg-caution-bg text-caution",
+  mildly_venomous: "border-low-border bg-low-bg text-low",
+  non_venomous: "border-low-border bg-low-bg text-low",
   unknown: "border-line bg-neutral-bg text-neutral",
 };
 

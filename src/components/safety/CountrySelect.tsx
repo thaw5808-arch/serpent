@@ -36,7 +36,7 @@ export function CountrySelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         aria-describedby={hint ? `${id}-hint` : undefined}
-        className="mt-2 block min-h-12 w-full rounded-badge border border-line bg-surface px-3 text-body text-ink"
+        className="mt-2 block min-h-12 w-full rounded-badge border border-line bg-field px-3 text-body text-ink hover:border-ink-2 focus:border-gold-light"
       >
         <option value="">{t.country.unknown}</option>
         {sorted.map((c) => (

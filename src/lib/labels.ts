@@ -26,11 +26,12 @@ export const RISK: Record<MedicalRisk, { tone: Tone; level: number }> = {
 export const VENOM_TYPES: VenomType[] = ["neurotoxic", "hemotoxic", "cytotoxic", "myotoxic", "cardiotoxic"];
 
 export const TONE_CLASSES: Record<Tone, { text: string; bg: string; border: string; fill: string }> = {
-  neutral: { text: "text-neutral", bg: "bg-neutral-bg", border: "border-neutral/40", fill: "bg-neutral" },
-  low: { text: "text-low", bg: "bg-low-bg", border: "border-low/40", fill: "bg-low" },
-  caution: { text: "text-caution", bg: "bg-caution-bg", border: "border-caution/40", fill: "bg-caution" },
-  high: { text: "text-high", bg: "bg-high-bg", border: "border-high/40", fill: "bg-high" },
-  critical: { text: "text-critical", bg: "bg-critical-bg", border: "border-critical/40", fill: "bg-critical" },
+  neutral: { text: "text-neutral", bg: "bg-neutral-bg", border: "border-line", fill: "bg-neutral" },
+  low: { text: "text-low", bg: "bg-low-bg", border: "border-low-border", fill: "bg-low" },
+  caution: { text: "text-caution", bg: "bg-caution-bg", border: "border-caution-border", fill: "bg-caution" },
+  high: { text: "text-high", bg: "bg-high-bg", border: "border-high-border", fill: "bg-high" },
+  // Critical is a solid red fill (white text on it); as text it is the same salmon as high.
+  critical: { text: "text-critical", bg: "bg-critical-bg", border: "border-high-border", fill: "bg-critical-fill" },
 };
 
 export type VisionProviderName = "anthropic" | "openai";

@@ -17,8 +17,7 @@ function section(path: string): string | null {
 /** "Segmented control" header: logo, the four pages in a rounded track, language and the emergency button. */
 export function SiteHeader() {
   const t = useT();
-  const path = stripLocale(usePathname() ?? "/");
-  const current = section(path);
+  const current = section(stripLocale(usePathname() ?? "/"));
   const links = [
     { href: "/identify", label: t.common.navIdentify },
     { href: "/species", label: t.common.navSpecies },
@@ -36,12 +35,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
-      className="site-header sticky top-0 z-40 bg-paper"
-      data-scrolled={scrolled || undefined}
-      // On the home page the header sits over the dark hero (globals.css).
-      data-home={path === "/" || undefined}
-    >
+    <header className="site-header sticky top-0 z-40" data-scrolled={scrolled || undefined}>
       <div className="page flex flex-wrap items-center gap-x-3 pb-2 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-4 lg:gap-x-6 md:pb-0">
         <Link
           href="/"

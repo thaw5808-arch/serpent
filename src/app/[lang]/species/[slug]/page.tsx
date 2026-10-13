@@ -126,7 +126,7 @@ function CuratedSpecies({ s: record, t, locale }: { s: SpeciesRecord; t: Message
                 <ul className="mt-3 divide-y divide-line border-y border-line">
                   {similar.map((x) => (
                     <li key={x.id}>
-                      <Link href={`/species/${x.id}`} className="flex min-h-14 flex-wrap items-center justify-between gap-3 py-3 hover:bg-surface sm:px-3">
+                      <Link href={`/species/${x.id}`} className="flex min-h-14 flex-wrap items-center justify-between gap-3 py-3 hover:bg-row-hover sm:px-3">
                         <span>
                           <span className="type-name block text-[1.125rem]">{x.commonName}</span>
                           <span className="binomial text-small text-ink-2">{x.scientificName}</span>

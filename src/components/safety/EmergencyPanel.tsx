@@ -18,7 +18,7 @@ export function EmergencyPanel() {
 
   return (
     <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-8">
-      <section aria-labelledby="call" className="rounded-card bg-emergency p-5 text-emergency-ink sm:p-8 lg:col-span-5">
+      <section aria-labelledby="call" className="rounded-card border border-line bg-surface p-5 text-ink sm:p-8 lg:col-span-5">
         <h2 id="call" className="type-h1">
           {t.emergency.callNow}
         </h2>
@@ -29,12 +29,12 @@ export function EmergencyPanel() {
             <li>
               <a
                 href={tel(main.number)}
-                className="flex min-h-24 items-center gap-4 rounded-card bg-white px-5 py-4 text-emergency hover:opacity-95"
+                className="flex min-h-24 items-center gap-4 rounded-card bg-emergency px-5 py-4 text-emergency-ink transition-colors hover:bg-emergency-hover"
               >
                 <Phone aria-hidden className="size-7 shrink-0" />
                 <span>
                   <span dir="ltr" className="block text-[2.5rem] font-semibold leading-none tracking-tight tabular-nums">{main.number}</span>
-                  <span className="mt-1 block text-small text-ink-2 dark:text-[#4a554f]">
+                  <span className="mt-1 block text-small opacity-90">
                     {t.contacts[main.label]}
                     {main.note ? ` — ${t.contacts[main.note]}` : ""}
                   </span>
@@ -45,7 +45,7 @@ export function EmergencyPanel() {
               <li key={e.number}>
                 <a
                   href={tel(e.number)}
-                  className="flex min-h-14 items-center gap-3 rounded-card border border-white/60 px-4 py-3 hover:bg-white/10"
+                  className="flex min-h-14 items-center gap-3 rounded-card bg-emergency px-4 py-3 text-emergency-ink transition-colors hover:bg-emergency-hover"
                 >
                   <Phone aria-hidden className="size-5 shrink-0" />
                   <span dir="ltr" className="shrink-0 text-lead font-semibold tabular-nums">{e.number}</span>
@@ -58,12 +58,12 @@ export function EmergencyPanel() {
             ))}
           </ul>
         ) : (
-          <p className="mt-6 rounded-card bg-white px-5 py-4 font-medium text-emergency">
+          <p className="mt-6 rounded-card border border-caution-border bg-caution-bg px-5 py-4 font-medium text-caution">
             {country ? fmt(t.emergency.noVerifiedNumber, { country: countryName(country.code, locale) }) : t.emergency.chooseCountry}
           </p>
         )}
 
-        <div className="mt-6 border-t border-white/30 pt-5">
+        <div className="mt-6 border-t border-line pt-5">
           <CountrySelect value={code} onChange={setCode} id="emergency-country" />
         </div>
         <p className="mt-3 text-small opacity-90">{t.emergency.numbersDisclaimer}</p>

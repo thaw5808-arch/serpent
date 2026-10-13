@@ -1,5 +1,5 @@
 import { Scan } from "lucide-react";
-import { Link } from "@/i18n/client";
+import { ButtonLink } from "@/components/ui/Button";
 import { LOCALES } from "@/i18n/config";
 import { formatCount } from "@/i18n/format";
 import { getDictionary } from "@/i18n/server";
@@ -79,13 +79,13 @@ export async function NocturneHero() {
             {after}
           </p>
           <div className="noc-ctas noc-rise" style={{ animationDelay: "1.65s" }}>
-            <Link href="/identify" className="noc-cta noc-cta-primary">
+            <ButtonLink href="/identify" className="noc-cta noc-sheen">
               <Scan aria-hidden className="size-5 shrink-0" />
               {t.ctaIdentify}
-            </Link>
-            <Link href="/species" className="noc-cta noc-cta-secondary">
+            </ButtonLink>
+            <ButtonLink href="/species" variant="secondary" className="noc-cta">
               {t.ctaBrowse}
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@ export function ReportWrongResult({ result }: { result: IdentificationResult }) 
             name="species"
             maxLength={120}
             autoComplete="off"
-            className="mt-2 block min-h-12 w-full rounded-badge border border-line bg-paper px-3 text-[16px]"
+            className="mt-2 block min-h-12 w-full rounded-badge border border-line bg-field px-3 text-ink placeholder:text-[var(--muted)] focus:border-gold-light text-[16px]"
           />
         </div>
         <div>
@@ -98,7 +98,7 @@ export function ReportWrongResult({ result }: { result: IdentificationResult }) 
             name="note"
             maxLength={1000}
             rows={3}
-            className="mt-2 block w-full rounded-badge border border-line bg-paper px-3 py-2 text-[16px]"
+            className="mt-2 block w-full rounded-badge border border-line bg-field px-3 text-ink placeholder:text-[var(--muted)] focus:border-gold-light py-2 text-[16px]"
           />
         </div>
         {state === "error" && (

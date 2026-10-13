@@ -238,7 +238,7 @@ export function IdentifyFlow({ notice }: { notice: ReactNode }) {
                 <img
                   src={img.previewUrl}
                   alt={fmt(t.identify.photoAlt, { n: i + 1 })}
-                  className={`w-full rounded-card border border-line bg-surface-2 object-contain ${plural ? "aspect-square object-cover" : "max-h-[55vh]"}`}
+                  className={`w-full rounded-card border border-line bg-surface object-contain ${plural ? "aspect-square object-cover" : "max-h-[55vh]"}`}
                 />
                 {state.step === "preview" && (
                   <button

@@ -13,14 +13,14 @@ export function FirstAid({ countryCode }: { countryCode: string }) {
         <ol className="mt-4 divide-y divide-line border-y border-line">
           {FIRST_AID_DO.map((k, i) => (
             <li key={k} className="grid grid-cols-[2rem_1fr] gap-x-3 py-4">
-              <span className="font-serif text-[1.375rem] font-semibold leading-6 text-moss tabular-nums">{i + 1}</span>
-              <span>{t.firstAid.do[k]}</span>
+              <span className="font-serif text-[1.375rem] font-semibold leading-6 text-gold tabular-nums">{i + 1}</span>
+              <span className="text-[1.125rem] text-ink">{t.firstAid.do[k]}</span>
             </li>
           ))}
           {regional.map((r) => (
             <li key={r.key} className="grid grid-cols-[2rem_1fr] gap-x-3 py-4">
               <Check aria-hidden className="size-6 text-low" />
-              <span>{t.firstAid.regional[r.key]}</span>
+              <span className="text-[1.125rem] text-ink">{t.firstAid.regional[r.key]}</span>
             </li>
           ))}
         </ol>
@@ -29,7 +29,7 @@ export function FirstAid({ countryCode }: { countryCode: string }) {
         <h3 id="fa-dont" className="type-h2">{t.firstAid.dontTitle}</h3>
         <ul className="mt-4 grid border-t border-line sm:grid-cols-2 sm:gap-x-8">
           {FIRST_AID_DONT.map((k) => (
-            <li key={k} className="flex gap-3 border-b border-line py-3 text-small sm:text-body">
+            <li key={k} className="flex gap-3 border-b border-line py-3 text-[1.125rem] text-ink">
               <X aria-hidden className="mt-0.5 size-5 shrink-0 text-high" />
               <span>{t.firstAid.dont[k]}</span>
             </li>

@@ -1,47 +1,53 @@
 @import "tailwindcss";
 
 /*
-  SERPENT design tokens.
-  Cool lichen-grey paper, deep moss ink, restrained semantic colours.
+  SERPENT design tokens ("Nocturne").
+  Near-black green paper, pale ink, gold accents, restrained semantic colours.
   Display: Source Serif 4 (optical sizes; scientific names are set in italic, per convention).
   UI/body: Schibsted Grotesk.
   Structure comes from 1px borders and hairline dividers: no shadows, no gradients.
 */
 
 :root {
-  --paper: #eef1ec;
-  --surface: #f9fbf8;
-  --surface-2: #e4e9e4;
-  --ink: #17201b;
-  --ink-2: #4a554f;
-  --line: #cdd5ce;
-  --divider-soft: #e4e9e4;
-  --moss: #2e4a3c;
-  --moss-ink: #ffffff;
-  --moss-hover: #253d31;
-  /* Filter dropdowns: field background, option hover, muted counts. */
-  --field: #ffffff;
-  --option-hover: #eef3ee;
-  --muted: #8a948e;
-  --panel-shadow: 0 12px 24px -12px rgba(23, 32, 27, 0.25);
+  color-scheme: dark;
 
-  --low: #2f6b47;      --low-bg: #e1eee4;
-  --caution: #845407;  --caution-bg: #f6ead2;
-  --high: #a3241a;     --high-bg: #f6e0dc;  --high-border: #e7bdb6;
-  --critical: #6e1010; --critical-bg: #f0d2ce;
-  --neutral: #4d5752;  --neutral-bg: #e2e7e3;
+  /* "Nocturne": one dark theme everywhere. */
+  --paper: #0b110e;
+  --surface: #121a16;
+  --surface-2: #18231d;
+  --ink: #eef1ec;
+  --ink-2: #a9b3ad;
+  --line: #26332c;
+  --divider-soft: #26332c;
+  --gold: #c2a94b;
+  --gold-light: #d9c77e;
+  /* Text and icons on gold. */
+  --gold-ink: #0b110e;
+  /* Inputs and custom dropdowns: field, option hover, placeholder. */
+  --field: #18231d;
+  --option-hover: rgba(194, 169, 75, .12);
+  --muted: #808b85; /* #7d8882 was 4.41:1 on --field; this is 4.59:1 */
+  --panel-shadow: 0 16px 32px -16px rgba(0, 0, 0, .7);
+  --row-hover: rgba(238, 241, 236, .03);
 
-  /* Filled "venomous" badge and the emergency surfaces keep white text in both themes. */
+  /* Safety colours, each at least 4.5:1 as text on --paper and --surface. */
+  --low: #7cc49a;      --low-bg: rgba(124, 196, 154, .10);  --low-border: rgba(124, 196, 154, .35);
+  --caution: #e0b75a;  --caution-bg: rgba(224, 183, 90, .10); --caution-border: rgba(224, 183, 90, .35);
+  --high: #f2867a;     --high-bg: rgba(242, 134, 122, .10);  --high-border: rgba(242, 134, 122, .35);
+  --critical: #f2867a; --critical-bg: rgba(179, 38, 30, .16); --critical-fill: #b3261e;
+  --neutral: #a9b3ad;  --neutral-bg: transparent;
+
+  /* Filled "venomous" badge and the emergency surfaces keep white text. */
   --venom-fill: #a3241a;
-  --emergency: #6e1010;
+  --emergency: #a3241a;
   --emergency-ink: #ffffff;
-  --emergency-hover: #861515;
+  --emergency-hover: #b62a1f;
 
-  /* Header segmented control: the track and the current page's segment. */
-  --track: #e1e7e1;
-  --segment: #ffffff;
+  /* Header segmented control. */
+  --track: #18231d;
+  --segment: rgba(238, 241, 236, .10);
 
-  --focus: #1f5fbf;
+  --focus: #d9c77e;
   --gutter: 20px;
 
   /* Font stacks. Thai and Burmese pages add their Noto faces after the Latin ones,
@@ -64,41 +70,6 @@ html:lang(my) {
   :root { --gutter: 32px; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0f1512;
-    --surface: #161e1a;
-    --surface-2: #1d2722;
-    --ink: #e3e9e4;
-    --ink-2: #9ca9a1;
-    --line: #2c3832;
-    --divider-soft: #1f2924;
-    --moss: #9cc2aa;
-    --moss-ink: #0f1512;
-    --moss-hover: #86ad95;
-    --field: #161e1a;
-    --option-hover: #1d2722;
-    --muted: #7f8c85;
-    --panel-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.6);
-
-    --low: #8fd0a6;      --low-bg: #16291e;
-    --caution: #e9b75c;  --caution-bg: #2c2312;
-    --high: #f19a8f;     --high-bg: #321816;  --high-border: #5a2a25;
-    --critical: #ffb4aa; --critical-bg: #3d1311;
-    --neutral: #b3bdb7;  --neutral-bg: #222b26;
-
-    --venom-fill: #a3241a;
-    --emergency: #7a1414;
-    --emergency-ink: #ffffff;
-    --emergency-hover: #8c1a1a;
-
-    --track: #18201c;
-    --segment: #26312b;
-
-    --focus: #8ab4ff;
-  }
-}
-
 @theme inline {
   --color-paper: var(--paper);
   --color-surface: var(--surface);
@@ -107,23 +78,29 @@ html:lang(my) {
   --color-ink-2: var(--ink-2);
   --color-line: var(--line);
   --color-divider: var(--divider-soft);
-  --color-moss: var(--moss);
-  --color-moss-ink: var(--moss-ink);
-  --color-moss-hover: var(--moss-hover);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-ink: var(--gold-ink);
+  --color-field: var(--field);
+  --color-row-hover: var(--row-hover);
   --color-low: var(--low);
   --color-low-bg: var(--low-bg);
+  --color-low-border: var(--low-border);
   --color-caution: var(--caution);
   --color-caution-bg: var(--caution-bg);
+  --color-caution-border: var(--caution-border);
   --color-high: var(--high);
   --color-high-bg: var(--high-bg);
   --color-high-border: var(--high-border);
   --color-critical: var(--critical);
   --color-critical-bg: var(--critical-bg);
+  --color-critical-fill: var(--critical-fill);
   --color-neutral: var(--neutral);
   --color-neutral-bg: var(--neutral-bg);
   --color-venom: var(--venom-fill);
   --color-emergency: var(--emergency);
   --color-emergency-ink: var(--emergency-ink);
+  --color-emergency-hover: var(--emergency-hover);
 
   --font-sans: var(--font-ui);
   --font-serif: var(--font-display);
@@ -150,7 +127,8 @@ html {
 }
 
 body {
-  background: var(--paper);
+  /* A faint lift at the top of every page, as on the landing hero. */
+  background: radial-gradient(ellipse 80% 60% at 70% 0%, #16211b 0%, var(--paper) 60%) no-repeat top / 100% 100vh, var(--paper);
   font-family: var(--font-ui);
   font-size: 1rem;
   line-height: 1.55;
@@ -158,9 +136,27 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/*
+  Headings that scripts focus (tabIndex -1) so screen readers announce a new step:
+  not interactive, so no ring. Chrome treats focus() on page load as :focus-visible,
+  so :focus:not(:focus-visible) alone doesn't hide it there.
+*/
+[tabindex="-1"]:is(h1, h2, h3, h4, h5, h6):focus,
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Text links: on hover the text and its underline turn gold. */
+a:is(.underline, [class*="hover:underline"]):hover,
+summary.underline:hover,
+button.underline:hover {
+  color: var(--gold-light);
+  text-decoration-color: var(--gold-light);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -207,15 +203,13 @@ body {
     scan line sweeps once. Decorative spans come from <ViewfinderDecor />.
     Hover only on real pointers so touch devices don't keep a stuck state;
     keyboard focus shows the corners alongside the global focus ring.
-    The hover background is the hover:bg-moss-hover utility (see Button.tsx),
-    because a component-layer rule can't beat the bg-moss utility.
-    Brackets and scan line use --moss-ink so they read on moss in both themes.
+    Brackets and scan line use --gold-ink so they read on the gold primary button.
   */
   .btn-viewfinder {
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    transition: background-color 180ms ease, transform 180ms cubic-bezier(.2, .7, .2, 1);
+    transition: box-shadow 200ms ease, transform 200ms cubic-bezier(.16, .84, .24, 1);
   }
   /* Inherits the button's gap so the resting layout is unchanged. */
   .btn-viewfinder .vf-label {
@@ -229,7 +223,7 @@ body {
     position: absolute;
     width: 12px;
     height: 12px;
-    border: 0 solid color-mix(in srgb, var(--moss-ink) 92%, transparent);
+    border: 0 solid color-mix(in srgb, var(--gold-ink) 92%, transparent);
     opacity: 0;
     pointer-events: none;
     transition: opacity 200ms ease, transform 240ms cubic-bezier(.2, .7, .2, 1);
@@ -244,7 +238,7 @@ body {
     right: 18px;
     top: 10px;
     height: 1px;
-    background: color-mix(in srgb, var(--moss-ink) 60%, transparent);
+    background: color-mix(in srgb, var(--gold-ink) 60%, transparent);
     opacity: 0;
     pointer-events: none;
   }
@@ -273,9 +267,12 @@ body {
     cursor: pointer;
     transition: border-color 150ms ease;
   }
-  .fd-trigger:hover,
+  .fd-trigger:hover {
+    border-color: var(--ink-2);
+  }
+  .fd-trigger:focus-visible,
   .fd-trigger[data-open] {
-    border-color: var(--ink);
+    border-color: var(--gold-light);
   }
   .fd-label {
     display: block;
@@ -313,7 +310,7 @@ body {
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 6px 0;
-    border: 1px solid var(--ink);
+    border: 1px solid var(--line);
     border-radius: 10px;
     background: var(--field);
     box-shadow: var(--panel-shadow);
@@ -334,7 +331,7 @@ body {
     cursor: pointer;
     transition: background-color 120ms ease, color 120ms ease;
   }
-  /* The left bar: moss, growing from the centre, for the hovered / keyboard-active option. */
+  /* The left bar: gold, growing from the centre, for the hovered / keyboard-active option. */
   .fd-option::before {
     content: "";
     position: absolute;
@@ -342,12 +339,12 @@ body {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: var(--moss);
+    background: var(--gold-light);
     transform: scaleY(0);
     transition: transform 160ms ease;
   }
   .fd-option[data-active] {
-    color: var(--moss);
+    color: var(--ink);
     background: var(--option-hover);
   }
   .fd-option[data-active]::before {
@@ -358,7 +355,7 @@ body {
     font-weight: 600;
   }
   .fd-option[aria-selected="true"]::before {
-    background: var(--ink);
+    background: var(--gold-light);
     transform: scaleY(1);
   }
   .fd-dot {
@@ -371,14 +368,14 @@ body {
     flex-shrink: 0;
     font-size: 0.8125rem;
     font-weight: 400;
-    color: var(--muted);
+    color: var(--ink-2);
     font-variant-numeric: tabular-nums;
   }
   .fd-check {
     display: inline-flex;
     width: 16px;
     flex-shrink: 0;
-    color: var(--ink);
+    color: var(--gold-light);
   }
   @media (prefers-reduced-motion: reduce) {
     .fd-trigger,
@@ -391,12 +388,21 @@ body {
     }
   }
 
-  /* Site header ("segmented control"). The border shows only once the page has scrolled. */
+  /* Site header ("segmented control"): dark glass. The border shows only once the page has scrolled. */
   .site-header {
     border-bottom: 1px solid transparent;
+    background: rgba(11, 17, 14, .55);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    color: var(--ink);
   }
   .site-header[data-scrolled] {
-    border-bottom-color: var(--line);
+    border-bottom-color: rgba(238, 241, 236, .2);
+  }
+  /* The slit-eye tile is as dark as the page, so it gets a faint gold edge. */
+  .logo-mark {
+    border-radius: 25%;
+    box-shadow: 0 0 0 1px rgba(194, 169, 75, .4);
   }
   /* Mobile: a full-width row of four equal columns; scrolls sideways rather than squeezing long labels. */
   .seg-track {
@@ -429,7 +435,7 @@ body {
   }
   .seg-link[aria-current="page"] {
     background: var(--segment);
-    border-color: var(--line);
+    border-color: rgba(194, 169, 75, .35);
     color: var(--ink);
     font-weight: 600;
   }
@@ -452,7 +458,7 @@ body {
     gap: 4px;
     height: 44px;
     padding: 0 10px;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(238, 241, 236, .2);
     border-radius: 10px;
     font-size: 0.875rem;
     font-weight: 600;
@@ -528,6 +534,34 @@ body {
     }
   }
 
+  /*
+    Buttons. The primary is the landing hero's gold CTA (the hero adds its shape
+    and the light sheen); Button.tsx's "primary" and "secondary" variants use these.
+  */
+  .btn-primary {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    color: var(--gold-ink);
+    font-weight: 600;
+    transition: transform 200ms cubic-bezier(.16, .84, .24, 1), box-shadow 200ms ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -18px rgba(194, 169, 75, .7);
+  }
+  .btn-secondary {
+    border: 1px solid rgba(238, 241, 236, .28);
+    background: transparent;
+    color: var(--ink);
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: rgba(238, 241, 236, .06);
+    border-color: rgba(238, 241, 236, .6);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary:hover:not(:disabled) { transform: none; }
+  }
+
   /* Small uppercase-free label above a value or block. */
   .eyebrow {
     font-size: 0.8125rem;
@@ -600,7 +634,6 @@ html:lang(my) .fd-option {
   --noc-ease: cubic-bezier(.16, .84, .24, 1);
   --noc-text: #eef1ec;
   --noc-gold: #c2a94b;
-  --focus: #8ab4ff;
   /* 720px, but never so tall that the stats fall below a laptop's fold. */
   --eye: min(720px, 46vw, max(440px, 100svh - 270px));
   --frame: 28px;
@@ -707,9 +740,8 @@ html:lang(my) .fd-option {
   overflow: hidden;
   transition: transform 200ms var(--noc-ease), box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease;
 }
-.noc-cta-primary { background: linear-gradient(180deg, #d9c77e, #c2a94b); color: #0b110e; }
-/* The light sheen that sweeps across every 5s. */
-.noc-cta-primary::after {
+/* The light sheen that sweeps across the hero's primary CTA every 5s. */
+.noc-sheen::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -718,9 +750,6 @@ html:lang(my) .fd-option {
   pointer-events: none;
   animation: noc-sheen 5s ease-in-out 3.4s infinite;
 }
-.noc-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(194, 169, 75, .6); }
-.noc-cta-secondary { border: 1px solid rgba(238, 241, 236, .28); color: var(--noc-text); }
-.noc-cta-secondary:hover { background: rgba(238, 241, 236, .06); border-color: rgba(238, 241, 236, .6); }
 .noc-cta:focus-visible { border-radius: 9999px; }
 
 .noc-foot {
@@ -800,7 +829,6 @@ html:is(:lang(th), :lang(my)) .noc-eyebrow { font-size: 0.875rem; }
     animation: none !important;
     transition: none !important;
   }
-  .noc-cta-primary:hover { transform: none; }
 }
 
 @keyframes noc-frame {
@@ -839,27 +867,6 @@ html:is(:lang(th), :lang(my)) .noc-eyebrow { font-size: 0.875rem; }
   0% { transform: translateY(-100%); }
   100% { transform: translateY(320%); }
 }
-
-/* The header over the hero (home page only): dark glass. Other pages keep the light header. */
-.site-header[data-home] {
-  --focus: #8ab4ff;
-  background: rgba(11, 17, 14, .55);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  color: #eef1ec;
-}
-.site-header[data-home][data-scrolled] { border-bottom-color: rgba(238, 241, 236, .2); }
-.site-header[data-home] .logo-mark { border-radius: 25%; box-shadow: 0 0 0 1px rgba(194, 169, 75, .4); }
-.site-header[data-home] .seg-track { background: rgba(238, 241, 236, .06); box-shadow: inset 0 0 0 1px rgba(238, 241, 236, .2); }
-.site-header[data-home] .seg-link { color: rgba(238, 241, 236, .72); }
-.site-header[data-home] .seg-link:hover { color: #eef1ec; }
-.site-header[data-home] .seg-link[aria-current="page"] { background: rgba(238, 241, 236, .12); border-color: rgba(238, 241, 236, .2); color: #eef1ec; }
-.site-header[data-home] .lang-trigger { border-color: rgba(238, 241, 236, .2); color: #eef1ec; }
-.site-header[data-home] .lang-trigger:hover,
-.site-header[data-home] .lang-trigger[data-open] { border-color: #eef1ec; }
-.site-header[data-home] .lang-chevron { color: rgba(238, 241, 236, .72); }
-.site-header[data-home] .bitten-btn { background: #a3241a; color: #ffffff; }
-.site-header[data-home] .bitten-btn:hover { background: #b62a1f; }
 
 /* Binomial nomenclature is italic by convention. */
 .binomial {

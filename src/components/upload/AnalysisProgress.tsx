@@ -47,7 +47,7 @@ export function AnalysisProgress({ phase, uploadPct }: { phase: Phase; uploadPct
       </ol>
       {phase === "analyzing" && (
         <div className="mt-4 h-1 overflow-hidden rounded-full bg-surface-2" aria-hidden>
-          <div className="indeterminate h-full w-2/5 rounded-full bg-moss" />
+          <div className="indeterminate h-full w-2/5 rounded-full bg-gold" />
         </div>
       )}
       <p className="mt-3 text-small text-ink-2">{t.progress.usually}</p>

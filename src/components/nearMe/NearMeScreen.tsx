@@ -160,7 +160,7 @@ function SnakeList({ rows }: { rows: NearbySnake[] }) {
         // Where venom data came from, when it's a genus or family rather than the species. (Not assessed is in the badge.)
         const basis = r.venomGroup ? venomBasisText(r, t, locale) : null;
         return (
-          <li key={r.id} className="py-4">
+          <li key={r.id} className="py-4 hover:bg-row-hover">
             <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
               <div className="min-w-0">
                 <p className="type-name break-words text-[1.125rem]">

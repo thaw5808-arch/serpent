@@ -287,11 +287,11 @@ function SaveSwitch({ on, onToggle }: { on: boolean; onToggle: () => void }) {
       >
         <span
           aria-hidden
-          className={`relative inline-block h-7 w-12 rounded-full border transition-colors ${on ? "border-moss bg-moss" : "border-ink-2 bg-surface-2"}`}
+          className={`relative inline-block h-7 w-12 rounded-full border transition-colors ${on ? "border-gold bg-gold" : "border-ink-2 bg-surface-2"}`}
         >
           <span
             className={`absolute left-0 top-1/2 size-5 -translate-y-1/2 rounded-full transition-transform ${
-              on ? "translate-x-[23px] bg-moss-ink" : "translate-x-[3px] bg-ink-2"
+              on ? "translate-x-[23px] bg-gold-ink" : "translate-x-[3px] bg-ink-2"
             }`}
           />
         </span>

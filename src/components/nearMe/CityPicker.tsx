@@ -131,7 +131,7 @@ export function CityPicker({ onPick, autoFocus = false }: { onPick: (p: Place) =
             onFocus={() => setOpen(true)}
             onBlur={() => setOpen(false)}
             onKeyDown={onKeyDown}
-            className="min-h-14 w-full rounded-card border border-line bg-[var(--field)] pl-12 pr-4 text-body text-ink placeholder:text-ink-2 hover:border-ink"
+            className="min-h-14 w-full rounded-card border border-line bg-field pl-12 pr-4 text-body text-ink placeholder:text-[var(--muted)] hover:border-ink-2 focus:border-gold-light"
           />
         </div>
         <ul
