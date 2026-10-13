@@ -5,7 +5,7 @@ import { pickLocale } from "@/i18n/negotiate";
 /**
  * Sends unprefixed page URLs to a locale (/species → /th/species): the saved
  * choice, else Accept-Language, else the selected country, else English.
- * API routes, admin pages, Next internals and files are never prefixed.
+ * API routes, admin pages, Next internals and files (including /apple-icon) are never prefixed.
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -25,5 +25,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|admin|_next|.*\\..*).*)"],
+  // apple-icon is a generated file with no extension.
+  matcher: ["/((?!api|admin|_next|apple-icon|.*\\..*).*)"],
 };

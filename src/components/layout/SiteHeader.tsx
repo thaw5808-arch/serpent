@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
+import { LogoMark } from "@/components/LogoMark";
 import { Link, useT } from "@/i18n/client";
 import { stripLocale } from "@/i18n/config";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -38,9 +39,10 @@ export function SiteHeader() {
       <div className="page flex flex-wrap items-center gap-x-3 pb-2 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-4 lg:gap-x-6 md:pb-0">
         <Link
           href="/"
-          className="type-name mr-auto inline-flex h-14 items-center justify-self-start text-[23px] md:h-16"
+          className="type-name mr-auto inline-flex h-14 items-center gap-2.5 justify-self-start text-[23px] md:h-16"
           aria-label={t.common.homeAria}
         >
+          <LogoMark className="size-6 shrink-0 sm:size-7" />
           Serpent
         </Link>
         <nav aria-label={t.common.mainNav} className="order-last w-full md:order-none md:w-auto">
