@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
-import { AlertTriangle, ArrowUpRight, ChevronDown } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, ChevronDown, MessageSquareText } from "lucide-react";
 import { KeepDistance } from "@/components/safety/KeepDistance";
 import { EmergencyCallBar } from "@/components/safety/EmergencyBar";
 import { VenomStatusBadge, VenomTypeChip } from "@/components/ui/StatusBadge";
@@ -589,6 +589,11 @@ function NoIdentification({
 
           <Actions>
             {canRetake && <ButtonLink href="/identify">{t.result.tryAnotherPhoto}</ButtonLink>}
+            {result.status === "insufficient_image" && (
+              <ButtonLink href="/identify/describe" variant="secondary">
+                <MessageSquareText aria-hidden className="size-5 shrink-0" /> {t.describe.entry}
+              </ButtonLink>
+            )}
             {result.status === "service_unavailable" && <ButtonLink href="/identify">{t.common.tryAgain}</ButtonLink>}
             <ButtonLink href="/species" variant="secondary">{t.result.browseSpecies}</ButtonLink>
           </Actions>

@@ -1,4 +1,5 @@
 // Core domain types for SERPENT.
+import type { Description } from "@/lib/describe";
 
 export type VenomStatus =
   | "venomous" // medically significant venom
@@ -222,4 +223,60 @@ export interface IdentificationResult {
   safety: SafetyAssessment;
   /** How many photos were analysed and whether an uncertain result got a second, independent analysis. */
   analysis?: { photos: number; secondOpinion: boolean; agreed: boolean | null };
+}
+
+/** One possible match for a described snake. Names and "why" are never translated. */
+export interface DescribedCandidate {
+  /** A curated species, or a recognised species from the full taxonomy. Anything else is dropped. */
+  kind: "species" | "taxonomy";
+  speciesId: string | null;
+  taxonomySlug: string | null;
+  /** English common name when there is one (never translated). */
+  commonName: string | null;
+  scientificName: string;
+  /** From our data at species, genus or family level; null = not assessed. Never from the model. */
+  venomStatus: VenomStatus | null;
+  venomBasis: CandidateView["venomBasis"];
+  venomGroup: CandidateView["venomGroup"];
+  /** From our data; null = not assessed. */
+  medicalRisk: MedicalRisk | null;
+  /** The model's 0–1 match to the answers (a relative estimate, not a probability). */
+  score: number;
+  /** The model's reason, based only on the answers, verbatim and in English. */
+  why: string;
+}
+
+/**
+ * - possible_matches: candidates were found (still never a confirmed identification);
+ * - not_enough_detail: mostly "Not sure", or nothing usable came back;
+ * - service_unavailable: the model couldn't be reached or answered badly.
+ */
+export type DescriptionStatus = "possible_matches" | "not_enough_detail" | "service_unavailable";
+
+/** Which species the model was allowed to choose from. */
+export type DescriptionPool = "nearby" | "country" | "everywhere";
+
+/** The result of "Describe a snake" (no photo). */
+export interface DescriptionResult {
+  mode: "description";
+  id: string;
+  analyzedAt: string;
+  engine: { provider: string; model: string };
+  status: DescriptionStatus;
+  /** ISO code of the place's country, or null. */
+  country: string | null;
+  /** The answers as given (ids, see src/lib/describe.ts). */
+  answers: Description;
+  pool: DescriptionPool;
+  /**
+   * Overall venom status: a description can't rule anything out, so this is never
+   * "non_venomous", "mildly_venomous" or "unknown".
+   */
+  displayVenomStatus: "potentially_venomous";
+  /** The worst medical risk among the candidates; never "low". */
+  overallRisk: Exclude<MedicalRisk, "low">;
+  /** A candidate is high or very high risk: show the danger banner and "I've been bitten" first. */
+  dangerous: boolean;
+  candidates: DescribedCandidate[];
+  safety: SafetyAssessment;
 }

@@ -132,6 +132,111 @@
     "cantOpenTitle": "That photo couldn't be opened",
     "chooseAnother": "Choose another photo"
   },
+  "describe": {
+    "title": "Describe a snake",
+    "lead": "Couldn't take a photo? Answer a few simple questions and we'll list snakes that could match. A description can't confirm the species.",
+    "entry": "Couldn't take a photo? Describe it instead",
+    "progress": "Question {n} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "seeMatches": "See possible matches",
+    "notSure": "Not sure",
+    "chooseAnswer": "Choose an answer, or “Not sure”.",
+    "working": "Finding possible matches…",
+    "noticeKnown": "Your answers and the place you choose are sent to {product}, an AI model by {company}, to find possible matches. No photo or exact location is sent.",
+    "noticeUnknown": "Your answers and the place you choose are sent to an external AI model to find possible matches. No photo or exact location is sent.",
+    "place": {
+      "title": "Where did you see it?",
+      "hint": "Optional, but it helps a lot: only snakes recorded near that place are considered.",
+      "seenNear": "Seen near {place}",
+      "change": "Change place",
+      "skip": "Not sure, skip"
+    },
+    "colours": {
+      "title": "What were its main colours?",
+      "hint": "Choose up to 3.",
+      "limit": "You can choose up to 3 colours. Untick one to choose another.",
+      "black": "Black",
+      "brown": "Brown",
+      "grey": "Grey",
+      "green": "Green",
+      "yellow": "Yellow",
+      "red_orange": "Red or orange",
+      "white_cream": "White or cream",
+      "blue_iridescent": "Blue-ish or iridescent"
+    },
+    "pattern": {
+      "title": "What pattern did it have?",
+      "bands": "Bands or rings around the body",
+      "stripes": "Stripes along the body",
+      "blotches": "Blotches or diamonds",
+      "speckled": "Speckled or spotted",
+      "plain": "Plain (one colour)"
+    },
+    "head": {
+      "title": "What was its head like?",
+      "triangular": "Clearly wider than the neck (triangular)",
+      "same_as_neck": "About the same width as the neck",
+      "hood": "It spread a hood"
+    },
+    "size": {
+      "title": "About how long was it?",
+      "under_50cm": "Under 50 cm",
+      "50cm_1m": "50 cm – 1 m",
+      "1m_2m": "1–2 m",
+      "over_2m": "Over 2 m"
+    },
+    "setting": {
+      "title": "Where exactly was it?",
+      "building": "Inside a building",
+      "garden": "Garden or yard",
+      "water": "Water or rice field",
+      "tree": "In a tree or bush",
+      "road": "On a road or path",
+      "forest": "Forest"
+    },
+    "time": {
+      "title": "When did you see it?",
+      "day": "Day",
+      "night": "Night"
+    },
+    "behaviour": {
+      "title": "What did it do?",
+      "hint": "Optional. Choose any that apply.",
+      "raised_head": "Raised its head or hood",
+      "hissed": "Hissed",
+      "flattened_neck": "Flattened its neck",
+      "fled": "Tried to flee",
+      "stayed_still": "Stayed still"
+    },
+    "result": {
+      "eyebrow": "Result from a description",
+      "disclaimer": "This is based on a description only. It can't confirm the species. Never approach the snake to check.",
+      "overallTitle": "Potentially venomous — treat it as dangerous",
+      "overallRisk": "Highest risk among the possible matches: {risk}",
+      "dangerTitle": "A possible match is a dangerous snake",
+      "dangerBody": "At least one snake that fits this description has medically significant venom. Keep well away. If someone has been bitten, get help now.",
+      "unknownTitle": "Unknown — not enough detail. Treat as dangerous and keep away",
+      "unknownTip": "Next time, if you can, take a photo from where you are. Never move closer to get one.",
+      "unavailableTitle": "Matching isn't available right now",
+      "unavailableBody": "No result was produced, so none is shown. Try again in a moment. Until then, treat the snake as dangerous.",
+      "matchesTitle": "Possible matches",
+      "matchesLead": "Snakes that fit your answers, best fit first. Venom and risk come from our species data, not from the AI.",
+      "why": "Why it matches:",
+      "poolNearby": "Compared with snakes recorded within 50 km of {place}.",
+      "poolCountry": "Compared with snakes recorded in or near {country}.",
+      "poolEverywhere": "No place was given, so every snake species was considered. These results are much less reliable.",
+      "photoInstead": "Identify with a photo instead",
+      "startOver": "Start over",
+      "yourAnswers": "Your answers",
+      "engineFooter": "AI matching by {product} ({model}), {date}. A description can't confirm the species."
+    },
+    "noPhoto": "Described, no photo",
+    "errors": {
+      "rateLimited": "Too many requests in a short time. Wait a minute and try again.",
+      "invalid": "Your answers couldn't be read. Start over and try again."
+    }
+  },
   "notice": {
     "uploadKnown": "Your photo is resized and stripped of location data on this device, then sent to {product}, an AI model by {company}, for analysis. Serpent does not store it.",
     "uploadUnknown": "Your photo is resized and stripped of location data on this device, then sent to an external AI model for analysis. Serpent does not store it.",

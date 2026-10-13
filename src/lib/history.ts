@@ -1,6 +1,6 @@
 "use client";
 import { MAX_PHOTOS_PER_REQUEST } from "@/lib/imageValidation";
-import type { IdentificationResult } from "@/types";
+import type { DescriptionResult, IdentificationResult } from "@/types";
 
 /*
  * History: past identifications, kept only in this browser's IndexedDB on this
@@ -31,11 +31,16 @@ export interface HistoryEntry {
   savedAt: string;
   /** ISO country code chosen for the analysis, or null. */
   country: string | null;
-  /** The result exactly as /api/identify returned it. */
-  result: IdentificationResult;
-  /** Small on-device JPEG thumbnails (data URLs), in upload order. Never the full-size photo. */
+  /** The result exactly as /api/identify (or /api/describe, with no photo) returned it. */
+  result: SavedResult;
+  /** Small on-device JPEG thumbnails (data URLs), in upload order. Never the full-size photo. Empty for a description. */
   thumbnails: string[];
 }
+
+export type SavedResult = IdentificationResult | DescriptionResult;
+
+/** A "Describe a snake" result: described, no photo. */
+export const isDescription = (r: SavedResult): r is DescriptionResult => "mode" in r && r.mode === "description";
 
 let dbPromise: Promise<IDBDatabase> | null = null;
 
@@ -117,7 +122,7 @@ export async function setSaveSetting(enabled: boolean): Promise<boolean> {
  * was unavailable (no result to keep), or storage is unavailable.
  */
 export async function saveToHistory(
-  result: IdentificationResult,
+  result: SavedResult,
   thumbnails: string[],
   { now = new Date() }: { now?: Date } = {},
 ): Promise<HistoryEntry | null> {

@@ -38,6 +38,8 @@ export const SAFETY_CRITICAL_PREFIXES = [
   "footer.disclaimer",
   // The landing hero promises how dangerous a snake may be and "never false reassurance".
   "landing.",
+  // "Describe a snake": the questions decide what is matched, and the result says how to treat the snake.
+  "describe.",
 ] as const;
 
 /** Every leaf key of a messages object, dotted. */

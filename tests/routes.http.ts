@@ -19,7 +19,8 @@ async function get(path: string, headers: Record<string, string> = {}) {
 /** Every page in Thai and Burmese, with text that must appear on it (from that locale's dictionary). */
 const PAGES: [string, (t: typeof th) => string[]][] = [
   ["", (t) => [t.home.title, t.home.cta, t.home.howTitle]],
-  ["/identify", (t) => [t.identify.title, t.identify.takePhoto, t.country.label]],
+  ["/identify", (t) => [t.identify.title, t.identify.takePhoto, t.country.label, t.describe.entry]],
+  ["/identify/describe", (t) => [t.describe.title, t.describe.place.title, t.describe.result.disclaimer]],
   ["/result", (t) => [t.result.srTitle]],
   ["/emergency", (t) => [t.emergency.callNow, t.firstAid.doTitle, t.firstAid.do.call, t.firstAid.dont.tourniquet]],
   ["/species", (t) => [t.speciesList.title]],

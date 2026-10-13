@@ -1,6 +1,10 @@
 import { getCountry, type Country } from "@/data/countries";
 import type {
   CandidateView,
+  DescribedCandidate,
+  DescriptionPool,
+  DescriptionResult,
+  MedicalRisk,
   TaxonGroup,
   ConfidenceBand,
   DisplayVenomStatus,
@@ -18,7 +22,8 @@ import { BASE_ACTIONS } from "@/lib/safetyActions";
 import { isMedicallySignificant } from "./venomDatabase";
 import { lookAlikesOf, resolveTaxon, type Taxon } from "./taxonomy";
 import { englishName } from "./taxonomyIndex";
-import type { RawAnalysis } from "./providers/types";
+import type { DescribeOutput, RawAnalysis } from "./providers/types";
+import { tooVague, type Description } from "@/lib/describe";
 
 /**
  * Deterministic safety policy. The vision model only ranks and names snakes;
@@ -602,6 +607,128 @@ export function decideSafety(raw: RawAnalysis, country: Country | null): Decisio
     uncertaintyNotes,
     modelNotes,
     notes,
+    safety,
+  };
+}
+
+/* ------------------------------------------------------------------------- */
+/* Describe a snake (no photo)                                               */
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Venom status and medical risk of a resolved taxon, from our data only: the
+ * curated species, else its genus/family venom group, else not assessed (null).
+ * The same species → genus → family fallback the photo result uses.
+ */
+export function assessTaxon(taxon: Taxon): Pick<DescribedCandidate, "venomStatus" | "venomBasis" | "venomGroup" | "medicalRisk"> {
+  const groupView = (g: TaxonGroup) => ({ name: g.name, commonName: g.commonName, rank: g.rank });
+  const basisOf = (g: TaxonGroup): "family" | "genus" => (g.rank === "family" ? "family" : "genus");
+  switch (taxon.kind) {
+    case "species":
+      return { venomStatus: taxon.species.venomStatus, venomBasis: "species", venomGroup: null, medicalRisk: taxon.species.medicalRisk };
+    case "taxonomy": {
+      const g = taxon.group;
+      return g
+        ? { venomStatus: g.venomStatus, venomBasis: basisOf(g), venomGroup: groupView(g), medicalRisk: g.medicalRisk }
+        : { venomStatus: null, venomBasis: "not_assessed", venomGroup: null, medicalRisk: null };
+    }
+    case "group":
+      return { venomStatus: taxon.group.venomStatus, venomBasis: basisOf(taxon.group), venomGroup: groupView(taxon.group), medicalRisk: taxon.group.medicalRisk };
+    default:
+      return { venomStatus: null, venomBasis: "unresolved", venomGroup: null, medicalRisk: null };
+  }
+}
+
+/** Danger order for the overall risk. A missing or unknown risk ranks above a known moderate one. */
+const RISK_SEVERITY: Record<MedicalRisk, number> = { low: 0, moderate: 1, unknown: 2, high: 3, very_high: 4 };
+const DANGEROUS_RISKS: ReadonlySet<MedicalRisk> = new Set(["high", "very_high"]);
+
+export const DESCRIBE_POLICY = {
+  /** At most this many possible matches are shown. */
+  maxCandidates: 5,
+} as const;
+
+/**
+ * The overall risk of a description: the worst among all candidates (not the top
+ * match's), never "low". A description can't rule out a dangerous snake, so a
+ * worst case of "low" is reported as "unknown".
+ */
+export function worstRisk(risks: (MedicalRisk | null)[]): Exclude<MedicalRisk, "low"> {
+  const worst = risks
+    .map((r) => r ?? "unknown")
+    .reduce<MedicalRisk>((a, b) => (RISK_SEVERITY[b] > RISK_SEVERITY[a] ? b : a), "low");
+  return worst === "low" ? "unknown" : worst;
+}
+
+export const isDangerousRisk = (risk: MedicalRisk | null) => risk !== null && DANGEROUS_RISKS.has(risk);
+
+export type DescriptionDecision = Omit<DescriptionResult, "mode" | "id" | "analyzedAt" | "engine">;
+
+/** Model candidates resolved against our taxonomy. Anything that isn't a recognised species is dropped. */
+export function resolveDescribed(output: DescribeOutput): DescribedCandidate[] {
+  const byKey = new Map<string, DescribedCandidate>();
+  for (const c of [...output.candidates].sort((a, b) => b.match_score - a.match_score)) {
+    const taxon = resolveTaxon({ scientificName: c.scientific_name });
+    if (taxon.kind !== "species" && taxon.kind !== "taxonomy") continue;
+    const key = taxon.kind === "species" ? `species:${taxon.species.id}` : `taxonomy:${taxon.record.slug}`;
+    if (byKey.has(key)) continue;
+    byKey.set(key, {
+      kind: taxon.kind,
+      speciesId: taxon.kind === "species" ? taxon.species.id : null,
+      taxonomySlug: taxon.kind === "taxonomy" ? taxon.record.slug : null,
+      commonName: taxon.kind === "species" ? taxon.species.commonName : englishName(taxon.record),
+      scientificName: taxon.kind === "species" ? taxon.species.scientificName : taxon.record.name,
+      ...assessTaxon(taxon),
+      score: Math.round(c.match_score * 100) / 100,
+      why: c.why.trim(),
+    });
+  }
+  return [...byKey.values()].slice(0, DESCRIBE_POLICY.maxCandidates);
+}
+
+/**
+ * The safety policy for a description-only result. However well the answers
+ * match, a description can't confirm a species:
+ * - the overall status is always "potentially venomous" (never non-venomous or low risk);
+ * - the overall risk is the worst among all candidates;
+ * - any high or very high risk candidate makes the result dangerous (red banner first);
+ * - mostly "Not sure", or nothing usable from the model, is "not enough detail".
+ * `output` null means the model couldn't be reached or answered badly.
+ */
+export function decideDescription(input: {
+  description: Description;
+  output: DescribeOutput | null;
+  pool: DescriptionPool;
+  country: string | null;
+}): DescriptionDecision {
+  const base = {
+    country: input.country,
+    answers: input.description,
+    pool: input.pool,
+    displayVenomStatus: "potentially_venomous" as const,
+  };
+  const unknown = (status: DescriptionDecision["status"]): DescriptionDecision => ({
+    ...base,
+    status,
+    overallRisk: "unknown",
+    dangerous: false,
+    candidates: [],
+    safety: baseSafety(),
+  });
+
+  if (tooVague(input.description)) return unknown("not_enough_detail");
+  if (!input.output) return unknown("service_unavailable");
+  const candidates = resolveDescribed(input.output);
+  if (candidates.length === 0) return unknown("not_enough_detail");
+
+  const safety = baseSafety();
+  addSpittingCobraAdvice(safety, candidates.flatMap((c) => (c.speciesId ? [c.speciesId] : [])));
+  return {
+    ...base,
+    status: "possible_matches",
+    overallRisk: worstRisk(candidates.map((c) => c.medicalRisk)),
+    dangerous: candidates.some((c) => isDangerousRisk(c.medicalRisk)),
+    candidates,
     safety,
   };
 }

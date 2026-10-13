@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { COUNTRY_CODES } from "@/data/countries";
 import { MAX_PHOTOS_PER_REQUEST, MAX_UPLOAD_BYTES, validatePhotoSet } from "@/lib/imageValidation";
-import { rateLimit } from "@/lib/rateLimit";
+import { clientKey, IDENTIFY_RATE_LIMIT, rateLimit } from "@/lib/rateLimit";
 import { createVisionProvider } from "@/services/providers";
 import { configuredEngine } from "@/services/providers/config";
 import { ProviderUnavailableError } from "@/services/providers/types";
@@ -13,14 +13,6 @@ import type { IdentificationResult } from "@/types";
 
 const CountrySchema = z.union([z.literal(""), z.enum(COUNTRY_CODES as [string, ...string[]])]);
 
-const RATE_LIMIT = { limit: 8, windowMs: 60_000 };
-
-function clientKey(req: Request): string {
-  // Used only as an in-memory rate-limit key; never logged or stored.
-  const fwd = req.headers.get("x-forwarded-for");
-  return fwd?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "local";
-}
-
 /**
  * `code` lets the client show the message in the user's language (errors.api.* in messages/*.json);
  * `error` is the English text for API clients and logs.
@@ -30,7 +22,7 @@ function error(status: number, code: string, message: string, extra: Record<stri
 }
 
 export async function POST(req: Request) {
-  const limited = rateLimit(`identify:${clientKey(req)}`, RATE_LIMIT.limit, RATE_LIMIT.windowMs);
+  const limited = rateLimit(`${IDENTIFY_RATE_LIMIT.key}:${clientKey(req)}`, IDENTIFY_RATE_LIMIT.limit, IDENTIFY_RATE_LIMIT.windowMs);
   if (!limited.allowed) {
     return NextResponse.json(
       { error: "Too many photos in a short time. Wait a minute and try again.", code: "rate_limited" },

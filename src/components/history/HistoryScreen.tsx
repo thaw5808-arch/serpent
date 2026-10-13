@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { History as HistoryIcon, ImageOff, Trash2 } from "lucide-react";
+import { History as HistoryIcon, ImageOff, MessageSquareText, Trash2 } from "lucide-react";
+import { candidateHrefOf, DescriptionResultView } from "@/components/describe/DescriptionResultView";
 import { candidateHref, ResultView } from "@/components/identification/ResultView";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { VenomStatusBadge } from "@/components/ui/StatusBadge";
@@ -9,7 +10,7 @@ import { Link, useLocale, useT } from "@/i18n/client";
 import { countryName, fmt, formatDateTime } from "@/i18n/format";
 import type { Messages } from "@/i18n/messages";
 import { candidateLabel } from "@/i18n/result";
-import { clearHistory, deleteFromHistory, getSaveSetting, listHistory, setSaveSetting, type HistoryEntry } from "@/lib/history";
+import { clearHistory, deleteFromHistory, getSaveSetting, isDescription, listHistory, setSaveSetting, type HistoryEntry } from "@/lib/history";
 
 type Load =
   | { status: "loading" }
@@ -19,12 +20,24 @@ type Load =
 /** What a row shows: the closest match, named exactly as on the result screen (names are never translated). */
 function summary(entry: HistoryEntry, t: Messages) {
   const r = entry.result;
+  if (isDescription(r)) {
+    // Described, no photo: the best fit, which is only ever a possible match.
+    const best = r.candidates[0];
+    return {
+      name: best ? (best.commonName ?? best.scientificName) : t.history.noMatch,
+      binomial: best?.commonName ? best.scientificName : null,
+      band: null,
+      href: best ? candidateHrefOf(best) : null,
+      described: true,
+    };
+  }
   const match = r.closestMatch ?? r.top;
   return {
     name: match ? candidateLabel(match, t) : t.history.noMatch,
     binomial: match?.scientificName ?? null,
     band: r.confidenceBand ?? match?.band ?? null,
     href: match ? candidateHref(match) : null,
+    described: false,
   };
 }
 
@@ -172,13 +185,14 @@ function HistoryList({
                       href={`/history?entry=${encodeURIComponent(entry.id)}`}
                       className="flex min-w-0 flex-1 items-start gap-4 py-4 pr-2 hover:bg-surface-2 sm:px-2"
                     >
-                      <Thumb src={entry.thumbnails[0]} />
+                      <Thumb src={entry.thumbnails[0]} described={s.described} />
                       <span className="min-w-0 flex-1">
                         <span className="type-name block break-words text-[1.125rem]">{s.name}</span>
                         {s.binomial && <span className="binomial block text-small text-ink-2">{s.binomial}</span>}
                         <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
                           <VenomStatusBadge status={entry.result.displayVenomStatus} />
                           {s.band && <span className="text-small font-medium">{t.band[s.band]}</span>}
+                          {s.described && <span className="text-small font-medium text-ink-2">{t.describe.noPhoto}</span>}
                         </span>
                         <span className="mt-1 block text-caption text-ink-2">
                           {date}
@@ -253,13 +267,14 @@ function HistoryList({
   );
 }
 
-/** The first photo of a saved result, or a placeholder when none was kept. Decorative: the row's text names it. */
-function Thumb({ src }: { src: string | undefined }) {
+/** The first photo of a saved result, or a placeholder when none was kept (or there was no photo). Decorative: the row's text names it. */
+function Thumb({ src, described = false }: { src: string | undefined; described?: boolean }) {
   const box = "size-18 shrink-0 rounded-badge border border-line bg-surface-2 sm:size-20";
   if (!src) {
+    const Icon = described ? MessageSquareText : ImageOff;
     return (
       <span className={`${box} inline-flex items-center justify-center text-ink-2`}>
-        <ImageOff aria-hidden className="size-5" />
+        <Icon aria-hidden className="size-5" />
       </span>
     );
   }
@@ -352,7 +367,11 @@ function SavedEntry({ entry }: { entry: HistoryEntry | undefined }) {
           )}
         </p>
       </div>
-      <ResultView result={entry.result} thumbnails={entry.thumbnails} />
+      {isDescription(entry.result) ? (
+        <DescriptionResultView result={entry.result} />
+      ) : (
+        <ResultView result={entry.result} thumbnails={entry.thumbnails} />
+      )}
     </>
   );
 }

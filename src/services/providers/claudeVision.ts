@@ -1,7 +1,8 @@
 import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
-import { ProviderUnavailableError, type VisionInput, type VisionProvider } from "./types";
+import { ProviderUnavailableError, type DescribeInput, type VisionInput, type VisionProvider } from "./types";
 import { SYSTEM_PROMPT, TOOL_DESCRIPTION, TOOL_NAME, analysisSchema, userPromptText } from "./prompt";
+import { DESCRIBE_SYSTEM_PROMPT, DESCRIBE_TOOL_DESCRIPTION, DESCRIBE_TOOL_NAME, describePromptText, describeSchema } from "./describePrompt";
 import { VISION_PROVIDER } from "@/lib/labels";
 
 export class ClaudeVisionProvider implements VisionProvider {
@@ -49,6 +50,25 @@ export class ClaudeVisionProvider implements VisionProvider {
     } catch (err) {
       if (err instanceof ProviderUnavailableError) throw err;
       throw new ProviderUnavailableError("Vision provider request failed", err);
+    }
+  }
+
+  async describe(input: DescribeInput): Promise<unknown> {
+    try {
+      const response = await this.client.messages.create({
+        model: this.model,
+        max_tokens: 1000,
+        system: DESCRIBE_SYSTEM_PROMPT,
+        tools: [{ name: DESCRIBE_TOOL_NAME, description: DESCRIBE_TOOL_DESCRIPTION, input_schema: describeSchema }],
+        tool_choice: { type: "tool", name: DESCRIBE_TOOL_NAME },
+        messages: [{ role: "user", content: describePromptText(input) }],
+      });
+      const block = response.content.find((b) => b.type === "tool_use" && b.name === DESCRIBE_TOOL_NAME);
+      if (!block || block.type !== "tool_use") throw new ProviderUnavailableError("Model did not return structured matches");
+      return block.input;
+    } catch (err) {
+      if (err instanceof ProviderUnavailableError) throw err;
+      throw new ProviderUnavailableError("Provider request failed", err);
     }
   }
 }

@@ -81,12 +81,41 @@ export const RawAnalysisSchema = z.preprocess(observationsToFeatures, z.object({
 
 export type RawAnalysis = z.infer<typeof RawAnalysisSchema>;
 
+/** "Describe a snake": the user's answers and the species the model may choose from, as text. No image. */
+export interface DescribeInput {
+  /** The answers, one per line, in English. */
+  answers: string;
+  /** Where the user saw it, or null. */
+  placeName: string | null;
+  /** The candidate pool's names, one genus per line. */
+  pool: string;
+  /** How the pool was chosen, so the prompt can say how broad it is. */
+  poolKind: "nearby" | "country" | "everywhere";
+}
+
+/** Shape the model must return for a description. Validated server-side; anything else is rejected. */
+export const DescribeOutputSchema = z.object({
+  candidates: z
+    .array(
+      z.object({
+        scientific_name: z.string().trim().min(3).max(120),
+        match_score: z.number().min(0).max(1),
+        why: z.string().trim().min(1).max(300),
+      }),
+    )
+    .max(5),
+});
+
+export type DescribeOutput = z.infer<typeof DescribeOutputSchema>;
+
 export interface VisionProvider {
   readonly name: string;
   readonly model: string;
   /** Running token totals for this provider instance (for cost reporting in scripts). */
   readonly usage?: { calls: number; inputTokens: number; outputTokens: number };
   analyze(input: VisionInput): Promise<unknown>;
+  /** One text-only request matching a description to species names. */
+  describe?(input: DescribeInput): Promise<unknown>;
 }
 
 export class ProviderUnavailableError extends Error {

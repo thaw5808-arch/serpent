@@ -8,6 +8,12 @@
 interface Bucket { count: number; resetAt: number }
 const buckets = new Map<string, Bucket>();
 
+/**
+ * Requests that call the AI model: photo identification and "Describe a snake"
+ * share one budget per caller, so switching between them doesn't double it.
+ */
+export const IDENTIFY_RATE_LIMIT = { key: "identify", limit: 8, windowMs: 60_000 } as const;
+
 export interface RateLimitResult { allowed: boolean; remaining: number; retryAfterSeconds: number }
 
 export function rateLimit(key: string, limit: number, windowMs: number, now = Date.now()): RateLimitResult {

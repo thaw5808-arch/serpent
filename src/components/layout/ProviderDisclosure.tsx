@@ -46,3 +46,17 @@ export function PhotoPrivacyText({ t }: { t: Messages }) {
     </Suspense>
   );
 }
+
+async function DescribeText() {
+  const [t, p] = await Promise.all([getDictionary(), currentProvider()]);
+  return <>{p ? fmt(t.describe.noticeKnown, p) : t.describe.noticeUnknown}</>;
+}
+
+/** The short notice shown before a description is sent ("Describe a snake"). */
+export function DescribeNotice({ t }: { t: Messages }) {
+  return (
+    <Suspense fallback={<>{t.describe.noticeUnknown}</>}>
+      <DescribeText />
+    </Suspense>
+  );
+}

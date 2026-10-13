@@ -569,6 +569,74 @@ button.underline:hover {
     font-weight: 500;
     color: var(--ink-2);
   }
+
+  /* "Describe a snake" answers: a real radio or checkbox inside a large tap target. */
+  .opt-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 60px;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 150ms ease, background-color 150ms ease;
+  }
+  .opt-card:hover {
+    border-color: var(--ink-2);
+  }
+  .opt-card:has(input:checked) {
+    border-color: var(--gold);
+    background: color-mix(in oklab, var(--gold) 12%, var(--surface));
+  }
+  .opt-card:has(input:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .opt-card:has(input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .opt-input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: var(--gold);
+  }
+  /* The input's own ring would double the card's. */
+  .opt-input:focus-visible {
+    outline: none;
+  }
+  .opt-art {
+    color: var(--ink-2);
+    transition: color 150ms ease;
+  }
+  .opt-card:has(input:checked) .opt-art {
+    color: var(--gold-light);
+  }
+  .opt-not-sure {
+    border-style: dashed;
+  }
+  /* Colour answers: a swatch beside the name (decorative; the name carries the meaning). */
+  .swatch {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--ink) 35%, transparent);
+  }
+  .swatch-black { background: #111412; }
+  .swatch-brown { background: #7a5232; }
+  .swatch-grey { background: #8a8f8c; }
+  .swatch-green { background: #3f8f4a; }
+  .swatch-yellow { background: #e3c33a; }
+  .swatch-red_orange { background: linear-gradient(135deg, #c8442b 50%, #e07b2a 50%); }
+  .swatch-white_cream { background: #f1ead8; }
+  .swatch-blue_iridescent { background: linear-gradient(135deg, #3a5fb0, #6bc1c9, #8a5fb0); }
 }
 
 /*

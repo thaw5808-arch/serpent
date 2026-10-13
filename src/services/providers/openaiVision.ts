@@ -1,7 +1,8 @@
 import "server-only";
 import OpenAI from "openai";
-import { ProviderUnavailableError, type VisionInput, type VisionProvider } from "./types";
+import { ProviderUnavailableError, type DescribeInput, type VisionInput, type VisionProvider } from "./types";
 import { SYSTEM_PROMPT, TOOL_DESCRIPTION, TOOL_NAME, analysisSchema, userPromptText } from "./prompt";
+import { DESCRIBE_SYSTEM_PROMPT, DESCRIBE_TOOL_DESCRIPTION, DESCRIBE_TOOL_NAME, describePromptText, describeSchema } from "./describePrompt";
 import { VISION_PROVIDER } from "@/lib/labels";
 
 export class OpenAIVisionProvider implements VisionProvider {
@@ -80,6 +81,37 @@ export class OpenAIVisionProvider implements VisionProvider {
     } catch (err) {
       if (err instanceof ProviderUnavailableError) throw err;
       throw new ProviderUnavailableError("Vision provider request failed", err);
+    }
+  }
+
+  async describe(input: DescribeInput): Promise<unknown> {
+    try {
+      const response = await this.client.responses.create({
+        model: this.model,
+        // Reasoning tokens count toward this limit.
+        max_output_tokens: 4000,
+        store: false,
+        instructions: DESCRIBE_SYSTEM_PROMPT,
+        tools: [
+          { type: "function", name: DESCRIBE_TOOL_NAME, description: DESCRIBE_TOOL_DESCRIPTION, parameters: describeSchema, strict: true },
+        ],
+        tool_choice: { type: "function", name: DESCRIBE_TOOL_NAME },
+        parallel_tool_calls: false,
+        input: [{ role: "user", content: [{ type: "input_text", text: describePromptText(input) }] }],
+      });
+      this.usage.calls++;
+      this.usage.inputTokens += response.usage?.input_tokens ?? 0;
+      this.usage.outputTokens += response.usage?.output_tokens ?? 0;
+      const call = response.output.find((item) => item.type === "function_call" && item.name === DESCRIBE_TOOL_NAME);
+      if (!call || call.type !== "function_call") throw new ProviderUnavailableError("Model did not return structured matches");
+      try {
+        return JSON.parse(call.arguments) as unknown;
+      } catch (err) {
+        throw new ProviderUnavailableError("Model returned unparseable tool arguments", err);
+      }
+    } catch (err) {
+      if (err instanceof ProviderUnavailableError) throw err;
+      throw new ProviderUnavailableError("Provider request failed", err);
     }
   }
 }

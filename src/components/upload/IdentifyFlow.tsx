@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { AlertTriangle, Camera, ImageUp, RotateCcw, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { AlertTriangle, Camera, ImageUp, MessageSquareText, RotateCcw, X } from "lucide-react";
+import { Button, ButtonLink } from "@/components/ui/Button";
 import { CountrySelect } from "@/components/safety/CountrySelect";
 import { useLocale, useT } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
@@ -211,6 +211,9 @@ export function IdentifyFlow({ notice }: { notice: ReactNode }) {
               <ImageUp aria-hidden className="size-5" /> {t.identify.uploadPhotos}
             </Button>
           </div>
+          <ButtonLink href="/identify/describe" variant="secondary" className="w-full">
+            <MessageSquareText aria-hidden className="size-5 shrink-0" /> {t.describe.entry}
+          </ButtonLink>
           <p className="text-small text-ink-2">{fmt(t.identify.maxPhotos, { max: MAX_PHOTOS_PER_REQUEST })}</p>
           {inputs}
           <CountrySelect
