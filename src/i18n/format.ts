@@ -6,6 +6,9 @@ export function fmt(template: string, params: Record<string, string | number> = 
   return template.replace(/\{(\w+)\}/g, (m, k: string) => (k in params ? String(params[k]) : m));
 }
 
+/** A count with thousands separators, written the same in every language (4,245). */
+export const formatCount = (n: number) => new Intl.NumberFormat("en-US").format(n);
+
 const INTL: Record<Locale, string> = { en: "en", th: "th-TH", my: "my-MM" };
 
 /** BCP 47 tag for Intl. Thai dates use the Buddhist calendar (th-TH default). */

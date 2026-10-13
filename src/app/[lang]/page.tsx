@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AlertTriangle, Camera } from "lucide-react";
+import { NocturneHero } from "@/components/landing/NocturneHero";
 import { ButtonLink } from "@/components/ui/Button";
 import { VenomStatusBadge } from "@/components/ui/StatusBadge";
 import { RiskMeter } from "@/components/venom/RiskMeter";
@@ -14,7 +15,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return { alternates: alternates(await getLocale(), "/") };
 }
 
-
 export default async function Home() {
   const t = await getDictionary();
   // The example shows real catalog names, which are never translated.
@@ -22,9 +22,10 @@ export default async function Home() {
   const wolfSnake = getSpecies("laotian-wolf-snake")!;
   return (
     <>
+      <NocturneHero />
       <section className="page grid gap-10 pb-16 pt-10 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-24 lg:pt-20">
         <div className="lg:col-span-7 lg:pr-8">
-          <h1 className="type-display">{t.home.title}</h1>
+          <h2 className="type-display">{t.home.title}</h2>
           <p className="mt-4 max-w-xl text-lead text-ink-2 lg:text-[1.1875rem]">
             {t.home.lead}
           </p>

@@ -4,7 +4,8 @@ import { describe, expect, it } from "vitest";
 import taxonomy from "@/data/taxonomy.json";
 import { decide } from "@/services/safetyService";
 import { resolveTaxon } from "@/services/taxonomy";
-import { lookupName, searchTaxonomy, TAXONOMY_SOURCE, type TaxonomyRecord } from "@/services/taxonomyIndex";
+import { formatCount } from "@/i18n/format";
+import { lookupName, searchTaxonomy, TAXONOMY_SOURCE, taxonomyCount, type TaxonomyRecord } from "@/services/taxonomyIndex";
 import { listSpecies } from "@/services/venomDatabase";
 import { getCountry } from "@/data/countries";
 import { raw, c } from "./helpers";
@@ -176,5 +177,16 @@ describe("taxonomy stays out of client bundles", () => {
       expect(text.includes("Ophryas acanthophis"), f).toBe(false);
       expect(text.includes("acanthophis-antarcticus"), f).toBe(false);
     }
+  });
+});
+
+describe("recognised species count (landing hero)", () => {
+  it("counts the full Reptile Database list, not just the catalog", () => {
+    expect(taxonomyCount()).toBeGreaterThan(4000);
+    expect(taxonomyCount()).toBe(RECORDS.length);
+  });
+
+  it("is formatted with thousands separators", () => {
+    expect(formatCount(4245)).toBe("4,245");
   });
 });

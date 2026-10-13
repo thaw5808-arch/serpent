@@ -44,6 +44,21 @@
     "disclaimer": "Serpent gives AI-assisted estimates from photographs. It can be wrong. It is not a substitute for a qualified wildlife professional or medical care. If someone has been bitten, call your local emergency number now.",
     "unicodeNote": "This site uses Myanmar Unicode."
   },
+  "landing": {
+    "eyebrow": "Snake identification & venom risk",
+    "titleLine1": "Know the snake.",
+    "titleLine2": "Know the risk.",
+    "lead": "One photo. Serpent compares it against {count} species and tells you plainly how dangerous it may be — or says {unknown} when it can't be sure.",
+    "unknown": "Unknown",
+    "ctaIdentify": "Identify a snake",
+    "ctaBrowse": "Browse species",
+    "statsLabel": "Serpent in numbers",
+    "statSpecies": "Species known",
+    "statLanguages": "Languages",
+    "statNever": "Never",
+    "statNeverLabel": "False reassurance",
+    "scroll": "Scroll"
+  },
   "home": {
     "title": "Identify a snake",
     "lead": "Upload a photo to identify the snake and understand its potential venom risk.",

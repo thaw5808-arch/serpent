@@ -36,6 +36,8 @@ export const SAFETY_CRITICAL_PREFIXES = [
   "notFound.body",
   "common.bitten",
   "footer.disclaimer",
+  // The landing hero promises how dangerous a snake may be and "never false reassurance".
+  "landing.",
 ] as const;
 
 /** Every leaf key of a messages object, dotted. */
