@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { MIN_SEASON_RECORDS, monthStanding, seasonPattern } from "@/lib/season";
+import { MIN_PEAK_RECORDS, MIN_SEASON_RECORDS, monthStanding, seasonPattern } from "@/lib/season";
 import { monthName } from "@/i18n/format";
 import type { NearbySnake, NearbySnakes } from "@/services/nearMe/classify";
 import { GbifUnavailableError } from "@/services/nearMe/gbif";
@@ -41,7 +41,17 @@ describe("season: peak months", () => {
 
   it("shows no pattern under 30 records", () => {
     expect(seasonPattern([0, 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0])).toEqual({ kind: "not_enough", total: 29 });
-    expect(seasonPattern([0, 0, 0, MIN_SEASON_RECORDS, 0, 0, 0, 0, 0, 0, 0, 0]).kind).toBe("peaks");
+    expect(seasonPattern([0, 0, 0, MIN_SEASON_RECORDS, 0, 0, 0, 0, 0, 0, 0, 0]).kind).not.toBe("not_enough");
+  });
+
+  it("from 30 to 99 records shows the chart but names no peak months, however uneven", () => {
+    // Mandalay-like: 66 records, a few months well above the average.
+    const mandalay = [2, 4, 2, 4, 7, 4, 4, 10, 6, 6, 6, 11];
+    expect(seasonPattern(mandalay)).toEqual({ kind: "few", total: 66 });
+    expect(seasonPattern([0, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0])).toEqual({ kind: "few", total: 99 });
+    expect(seasonPattern([0, 0, 0, MIN_PEAK_RECORDS, 0, 0, 0, 0, 0, 0, 0, 0])).toMatchObject({ kind: "peaks", peaks: [4] });
+    // The home card says nothing about a month either.
+    expect(monthStanding(mandalay, 12)).toBeNull();
   });
 
   it("rates a month for the home card, never without enough records", () => {

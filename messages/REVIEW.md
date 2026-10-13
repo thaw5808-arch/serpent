@@ -257,6 +257,7 @@ Burmese text must be Myanmar Unicode, never Zawgyi.
 | `season.loading` | reviewed: no | reviewed: no |
 | `season.unavailable` | reviewed: no | reviewed: no |
 | `season.notEnough` | reviewed: no | reviewed: no |
+| `season.few` | reviewed: no | reviewed: no |
 | `season.even` | reviewed: no | reviewed: no |
 | `season.peaks` | reviewed: no | reviewed: no |
 | `season.note` | reviewed: no | reviewed: no |

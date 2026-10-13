@@ -680,6 +680,7 @@
     "loading": "Loading the snake season…",
     "unavailable": "The snake season isn't available right now. Snakes can be active in any month.",
     "notEnough": "Not enough sighting records here to show a season pattern. Snakes can be active in any month.",
+    "few": "Only a few records here, so the monthly pattern may not be reliable. Snakes can be active in any month.",
     "even": "Records are spread fairly evenly across the year.",
     "peaks": "Most snake records near {place} are from {months}.",
     "note": "Based on when people reported snakes, not an exact count. Fewer reports can mean fewer people looking. Stay careful all year.",

@@ -13,6 +13,7 @@ const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
 /** One sentence that names the peak months in words (or says there is no clear peak). */
 export function seasonSummary(pattern: SeasonPattern, place: string, t: Messages, locale: Locale): string {
   if (pattern.kind === "not_enough") return t.season.notEnough;
+  if (pattern.kind === "few") return t.season.few;
   if (pattern.kind === "even") return t.season.even;
   return fmt(t.season.peaks, { place, months: pattern.peaks.map((m) => monthName(m, locale)).join(t.common.listSeparator) });
 }
